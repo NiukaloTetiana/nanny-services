@@ -8,6 +8,11 @@ export default {
       lg: "1440px",
     },
     extend: {
+      boxShadow: {
+        "custom-shadow": "0px 0px 0px 2px #eca29b",
+        "success-shadow": "0px 0px 0px 2px #86efac",
+      },
+
       fontFamily: {
         helvetica: ["Helvetica Neue", "sans-serif"],
       },

@@ -17,17 +17,17 @@ export const NavBar = ({
       </Link>
 
       <ul className={classList}>
-        <li onClick={toggleMenu} className="relative">
+        <li onClick={toggleMenu}>
           <NavLink to="/" className={classItem}>
             Home
           </NavLink>
         </li>
-        <li onClick={toggleMenu} className="relative">
+        <li onClick={toggleMenu}>
           <NavLink to="/nannies" className={classItem}>
             Nannies
           </NavLink>
         </li>
-        <li onClick={toggleMenu} className="relative">
+        <li onClick={toggleMenu}>
           <NavLink to="/favorites" className={classItem}>
             Favorites
           </NavLink>

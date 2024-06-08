@@ -25,6 +25,10 @@
 }
 
 /* =========================================STYLES================================================= */
+.active {
+  position: relative;
+}
+
 .active::after {
   content: "";
   display: inline-block;
@@ -33,7 +37,17 @@
   background-color: #fff;
   border-radius: 50%;
   position: absolute;
-  bottom: 25px;
+  bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+@media (min-width: 1440px) {
+  .active::after {
+    bottom: 28px;
+  }
+}
+
+input {
+  outline: transparent;
 }
