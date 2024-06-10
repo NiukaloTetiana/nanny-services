@@ -37,7 +37,7 @@ export const Header = () => {
         <AuthButton
           className="hidden lg:flex gap-[8px] items-center"
           classLogIn="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[38px] py-[14px] w-[124px] font-medium text-[16px] text-[#fbfbfb] leading-[125%] tracking-[-0.01em] hover:text-[#504242] hover:border-[#504242] focus:text-[#504242] focus:border-[#504242] transition duration-300"
-          classRegistration="border border-none bg-[#f03f3b] rounded-[30px] px-[40px] py-[14px] w-[168px] font-medium text-[16px] leading-[125%] tracking-[-0.01em] text-[#fbfbfb] hover:text-[#f03f3b] hover:bg-[#fbfbfb] focus:text-[#f03f3b] focus:bg-[#fbfbfb] transition duration-300"
+          classRegistration="border border-[#fbfbfb66] bg-[#f03f3b] rounded-[30px] px-[40px] py-[14px] w-[168px] font-medium text-[16px] leading-[125%] tracking-[-0.01em] text-[#fbfbfb] hover:text-[#f03f3b] hover:bg-[#fbfbfb] focus:text-[#f03f3b] focus:bg-[#fbfbfb] transition duration-300"
         />
       </div>
     </header>
