@@ -7,3 +7,4 @@ export * from "./Header/BurgerMenu.jsx";
 export * from "./Header/NavBar.jsx";
 export * from "./Header/AuthButton.jsx";
 export * from "./AuthForm/AuthForm.jsx";
+export * from "./BgImgWrapper/BgImgWrapper.jsx";
