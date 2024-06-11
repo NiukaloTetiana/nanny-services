@@ -52,17 +52,17 @@ export const BgImageWrapper = () => {
 
   return (
     <div
-      className="flex items-center gap-[16px] bg-[#fbfbfb] rounded-[20px] p-[32px] w-[284px]"
+      className="flex items-center gap-[16px] bg-lightColor rounded-[20px] p-[32px] w-[284px]"
       onAnimationStart={handleAnimationStart}
     >
-      <div className="flex justify-center items-center w-[54px] h-[54px] rounded-[13px] bg-[#f03f3b]">
-        <Icon id="check" className="fill-[#fbfbfb] lg:size-[30px]" size="30" />
+      <div className="flex justify-center items-center w-[54px] h-[54px] rounded-[13px] bg-accentColor">
+        <Icon id="check" className="fill-lightColor lg:size-[30px]" size="30" />
       </div>
-      <div className="">
+      <div>
         <p className="font-normal text-[16px] leading-[125%] text-[#11101c7f] mb-[4px]">
           Experienced nannies
         </p>
-        <p className="font-bold text-[24px] leading-[125%] text-[#11101c]">
+        <p className="font-bold text-[24px] leading-[125%] text-darkColor">
           {randomSum}
         </p>
       </div>

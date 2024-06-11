@@ -8,7 +8,7 @@ export const Layout = () => {
     <>
       <Header />
 
-      <main className="container">
+      <main>
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>

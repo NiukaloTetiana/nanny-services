@@ -30,7 +30,7 @@ export const Modal = ({ children, toggleModal }) => {
       onClick={handleClickOnBackdrop}
     >
       <div
-        className={`relative bg-[#fbfbfb] p-[34px] lg:p-[64px] rounded-[30px] sm-max:max-w-[300px] max-w-[335px] md:max-w-[696px] lg:max-w-[1184px] max-h-[95%] overflow-hidden`}
+        className={`relative bg-lightColor p-[34px] lg:p-[64px] rounded-[30px] sm-max:max-w-[300px] max-w-[335px] md:max-w-[696px] lg:max-w-[1184px] max-h-[95%] overflow-hidden`}
       >
         <button
           type="button"
@@ -39,7 +39,7 @@ export const Modal = ({ children, toggleModal }) => {
         >
           <Icon
             id="close"
-            className="stroke-[#11101c] md:size-[18px] lg:size-[20px]"
+            className="stroke-darkColor md:size-[18px] lg:size-[20px]"
             size="16"
           />
         </button>

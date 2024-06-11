@@ -29,7 +29,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
       onClick={handleBackdropClick}
       className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 lg:hidden"
     >
-      <div className="relative flex flex-col justify-start items-center gap-[45px] bg-[#f03f3b] px-[24px] py-[50px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-full">
+      <div className="relative flex flex-col justify-start items-center gap-[45px] bg-accentColor px-[24px] py-[50px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-full">
         <button
           type="button"
           className="flex justify-center items-center absolute top-[24px] right-[24px] outline-none group"
@@ -38,21 +38,21 @@ export const BurgerMenu = ({ toggleMenu }) => {
           <Icon
             id="close"
             size="20"
-            className="stroke-[#fbfbfb] group-focus:fill-[#2355cc] transition duration-300 md:size-[30px]"
+            className="stroke-lightColor group-focus:fill-[#fbfbfb66] transition duration-300 md:size-[30px]"
           />
         </button>
 
         <NavBar
           toggleMenu={toggleMenu}
-          classLogo="flex items-center gap-[5px] font-medium text-[24px] leading-[1.2] tracking-[-0.02em] text-[#fbfbfb] md:text-[28px] mb-[45px]"
-          classList="flex flex-col gap-[30px] font-normal text-[18px] text-center leading-[1.25] tracking-[-0.01em] text-[#fbfbfb] md:text-[24px]"
+          classLogo="flex items-center gap-[5px] font-medium text-[24px] leading-[1.2] tracking-[-0.02em] text-lightColor md:text-[28px] mb-[45px]"
+          classList="flex flex-col gap-[30px] font-normal text-[18px] text-center leading-[1.25] tracking-[-0.01em] text-lightColor md:text-[24px]"
         />
 
         <AuthButton
           toggleMenu={toggleMenu}
           className="flex flex-col justify-center items-center w-full gap-[10px] md:gap-[12px]"
-          classLogIn="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[38px] py-[14px] w-[185px] md:w-[235px] font-medium text-[16px] md:text-[20px] text-[#fbfbfb] leading-[125%] tracking-[-0.01em] hover:text-[#504242] hover:border-[#504242] focus:text-[#504242] focus:border-[#504242] transition duration-300"
-          classRegistration="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[38px] py-[14px] w-[185px] md:w-[235px] font-medium text-[16px] md:text-[20px] leading-[125%] tracking-[-0.01em] text-[#fbfbfb] hover:text-[#f03f3b] hover:bg-[#fbfbfb] focus:text-[#f03f3b] focus:bg-[#fbfbfb] transition duration-300"
+          classLogIn="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[38px] py-[14px] w-[185px] md:w-[235px] font-medium text-[16px] md:text-[20px] text-lightColor leading-[125%] tracking-[-0.01em] primary-btn-hover"
+          classRegistration="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[38px] py-[14px] w-[185px] md:w-[235px] font-medium text-[16px] md:text-[20px] leading-[125%] tracking-[-0.01em] text-lightColor primary-btn-hover"
         />
       </div>
     </div>

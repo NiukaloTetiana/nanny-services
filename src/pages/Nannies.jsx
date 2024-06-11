@@ -1,5 +1,5 @@
 const Nannies = () => {
-  return <div>Nannies page</div>;
+  return <div className="container">Nannies page</div>;
 };
 
 export default Nannies;

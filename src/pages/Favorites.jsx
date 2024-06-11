@@ -1,5 +1,9 @@
 const Favorites = () => {
-  return <div>Favorites page</div>;
+  return (
+    <div className="container">
+      Favorites page
+    </div>
+  );
 };
 
 export default Favorites;

@@ -25,29 +25,104 @@
 }
 
 /* =========================================STYLES================================================= */
+
+input {
+  @apply outline-transparent;
+}
+
 .active {
-  position: relative;
+  @apply relative
+after:content-[''''] after:absolute after:bottom-[-12px] lg:after:bottom-[28px] after:left-[50%] after:w-[8px] after:h-[8px] after:rounded-[50%] after:bg-[#fff] after:translate-x-[-50%];
 }
 
-.active::after {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background-color: #fff;
-  border-radius: 50%;
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
+.home-wrapper {
+  @apply relative py-[163px]
+before:content-[''''] before:w-[677px] before:h-[736px] before:bg-accentColor before:absolute before:top-[-88px] before:left-[-96px] before:z-[-2] before:rounded-tl-[30px] before:rounded-bl-[30px]
+
+after:content-[''''] after:absolute after:top-[-88px] after:right-[-96px] after:w-[699px] after:h-[736px] after:bg-accentColor after:bg-[url('./assets/images/hero_desktop1x.jpg')] after:bg-cover after:bg-center after:z-[-2] after:rounded-tr-[30px] after:rounded-br-[30px];
 }
 
-@media (min-width: 1440px) {
-  .active::after {
-    bottom: 28px;
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .home-wrapper::after {
+    background-image: url("./assets/images/hero_desktop2x.jpg");
   }
 }
 
-input {
-  outline: transparent;
+.home-line {
+  @apply relative
+after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[1376px] after:h-[1px] after:bg-[#fbfbfb66] after:translate-x-[-50%];
+}
+
+.primary-btn-hover {
+  @apply relative hover:text-[#f03f3b] focus:text-[#f03f3b] active:text-[#f03f3b] transition duration-1000;
+}
+.primary-btn-hover::after {
+  @apply content-[''''] absolute top-0 left-0 w-full h-full z-[-1] bg-[#fbfbfb] scale-x-[0] rounded-[30px] origin-right transition duration-1000;
+}
+.primary-btn-hover:hover::after,
+.primary-btn-hover:focus::after,
+.primary-btn-hover:active::after {
+  @apply origin-left scale-x-100;
+}
+
+@keyframes moveBox {
+  0% {
+    transform: translate(200px, 0);
+  }
+  12.5% {
+    transform: translate(400px, 159px);
+  }
+  25% {
+    transform: translate(200px, 361px);
+  }
+  37.5% {
+    transform: translate(0, 168px);
+  }
+  50% {
+    transform: translate(280px, 0);
+  }
+  62.5% {
+    transform: translate(400px, 180px);
+  }
+  75% {
+    transform: translate(200px, 361px);
+  }
+  87.5% {
+    transform: translate(0, 120px);
+  }
+  100% {
+    transform: translate(200px, 0);
+  }
+}
+
+@media (min-width: 1440px) {
+  @keyframes moveBox {
+    0% {
+      transform: translate(150px, 0);
+    }
+    12.5% {
+      transform: translate(308px, 200px);
+    }
+    25% {
+      transform: translate(150px, 447px);
+    }
+    37.5% {
+      transform: translate(0, 300px);
+    }
+    50% {
+      transform: translate(200px, 0);
+    }
+    62.5% {
+      transform: translate(308px, 250px);
+    }
+    75% {
+      transform: translate(150px, 447px);
+    }
+    87.5% {
+      transform: translate(0, 200px);
+    }
+    100% {
+      transform: translate(150px, 0);
+    }
+  }
 }

@@ -8,6 +8,11 @@ export default {
       lg: "1440px",
     },
     extend: {
+      colors: {
+        accentColor: "#f03f3b",
+        lightColor: "#fbfbfb",
+        darkColor: "#11101c",
+      },
       boxShadow: {
         "custom-shadow": "0px 0px 0px 2px #eca29b",
         "success-shadow": "0px 0px 0px 2px #86efac",
