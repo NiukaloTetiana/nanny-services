@@ -22,22 +22,20 @@ export const Filter = () => {
 
       <div
         onClick={handleListClick}
-        className="flex items-center justify-between bg-accentColor rounded-[14px] px-[18px] py-[16px] w-[226px] font-medium text-[18px] leading-[1.1] text-lightColor cursor-pointer hover:text-accentColor mb-[8px] hover:bg-lightColor focus:text-accentColor focus:bg-lightColor transition duration-300 group"
+        className="flex items-center justify-between bg-accentColor rounded-[14px] px-[18px] py-[16px] w-[180px] md:w-[226px] font-medium text-[16px] md:text-[18px] leading-[1.1] text-lightColor cursor-pointer hover:text-accentColor mb-[8px] hover:bg-lightColor focus:text-accentColor focus:bg-lightColor transition duration-300 group"
       >
         {selectedFilter}
         <Icon
           id="chevron-down"
-          className={`stroke-lightColor fill-none group-hover:stroke-accentColor group-focus:stroke-accentColor group-transition group-duration-300 ${
-            isListVisible
-              ? "rotate-180 group-transition group-duration-300"
-              : ""
+          className={`stroke-lightColor fill-none group-hover:stroke-accentColor group-focus:stroke-accentColor transition duration-300 ${
+            isListVisible ? "rotate-180" : ""
           }`}
           size="20"
         />
       </div>
 
       {isListVisible && (
-        <ul className="bg-[#fff] rounded-[14px] px-[18px] py-[16px] w-[226px] font-normal text-[18px] leading-[1.1] text-[#11101c4c] custom-list-spacing">
+        <ul className="bg-[#fff] rounded-[14px] px-[18px] py-[16px] w-[180px] md:w-[226px] font-normal text-[16px] md:text-[18px] leading-[1.1] text-[#11101c4c] custom-list-spacing">
           {[
             "A to Z",
             "Z to A",

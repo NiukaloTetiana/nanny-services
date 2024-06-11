@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 
-import { AuthButton, Icon, NavBar } from "../../components";
+import { AuthButton, Icon, NavBar, UserBar } from "../../components";
 
 export const BurgerMenu = ({ toggleMenu }) => {
+  const isLogIn = false;
   const handleBackdropClick = (event) => {
     if (event.currentTarget === event.target) {
       toggleMenu();
@@ -47,13 +48,16 @@ export const BurgerMenu = ({ toggleMenu }) => {
           classLogo="flex items-center gap-[5px] font-medium text-[24px] leading-[1.2] tracking-[-0.02em] text-lightColor md:text-[28px] mb-[45px]"
           classList="flex flex-col gap-[30px] font-normal text-[18px] text-center leading-[1.25] tracking-[-0.01em] text-lightColor md:text-[24px]"
         />
-
-        <AuthButton
-          toggleMenu={toggleMenu}
-          className="flex flex-col justify-center items-center w-full gap-[10px] md:gap-[12px]"
-          classLogIn="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[38px] py-[14px] w-[185px] md:w-[235px] font-medium text-[16px] md:text-[20px] text-lightColor leading-[125%] tracking-[-0.01em] primary-btn-hover"
-          classRegistration="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[38px] py-[14px] w-[185px] md:w-[235px] font-medium text-[16px] md:text-[20px] leading-[125%] tracking-[-0.01em] text-lightColor primary-btn-hover"
-        />
+        {!isLogIn ? (
+          <AuthButton
+            toggleMenu={toggleMenu}
+            className="flex flex-col justify-center items-center w-full gap-[10px] md:gap-[12px]"
+            classLogIn="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[38px] py-[14px] w-[185px] md:w-[235px] font-medium text-[16px] md:text-[20px] text-lightColor leading-[125%] tracking-[-0.01em] primary-btn-hover"
+            classRegistration="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[38px] py-[14px] w-[185px] md:w-[235px] font-medium text-[16px] md:text-[20px] leading-[125%] tracking-[-0.01em] text-lightColor primary-btn-hover"
+          />
+        ) : (
+          <UserBar />
+        )}
       </div>
     </div>
   );
