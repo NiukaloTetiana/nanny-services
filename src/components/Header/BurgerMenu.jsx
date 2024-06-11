@@ -2,8 +2,7 @@ import { useEffect } from "react";
 
 import { AuthButton, Icon, NavBar, UserBar } from "../../components";
 
-export const BurgerMenu = ({ toggleMenu }) => {
-  const isLogIn = false;
+export const BurgerMenu = ({ isLogIn, toggleMenu }) => {
   const handleBackdropClick = (event) => {
     if (event.currentTarget === event.target) {
       toggleMenu();
@@ -44,6 +43,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
         </button>
 
         <NavBar
+          isLogIn={isLogIn}
           toggleMenu={toggleMenu}
           classLogo="flex items-center gap-[5px] font-medium text-[24px] leading-[1.2] tracking-[-0.02em] text-lightColor md:text-[28px] mb-[45px]"
           classList="flex flex-col gap-[30px] font-normal text-[18px] text-center leading-[1.25] tracking-[-0.01em] text-lightColor md:text-[24px]"

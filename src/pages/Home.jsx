@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-import { BgImageWrapper, Icon } from "../components";
+import { Icon, MovingWrapper } from "../components";
 
 const Home = () => {
   return (
     <div className="container pb-[32px]">
-      <div className="home-wrapper relative">
+      <div className="home-wrapper">
         <h1 className="font-medium text-[40px] leading-[1] tracking-[-0.03em] text-lightColor mb-[28px] sm-max:text-[35px] lg:text-[70px] lg:w-[517px]">
           Make Life Easier for the Family:
         </h1>
@@ -20,15 +20,12 @@ const Home = () => {
           Get started
           <Icon
             id="arrow-up"
-            className="fill-current group-hover:rotate-[53deg] group-transition group-duration-300"
+            className="fill-current group-hover:rotate-[53deg] transition duration-500"
             size="20"
           />
         </NavLink>
 
-        <div className="absolute bottom-[50px] right-[-50px]">
-          {/* <div className="absolute top-0 right-[-96px] w-[699px] z-[-1] overflow-hidden animate-moveBox"> */}
-          <BgImageWrapper />
-        </div>
+        <MovingWrapper />
       </div>
     </div>
   );

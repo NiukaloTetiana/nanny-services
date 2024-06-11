@@ -27,12 +27,13 @@ export const Header = () => {
         }`}
       >
         <NavBar
+          isLogIn={isLogIn}
           className="flex items-center justify-between text-center w-full"
           classLogo="flex items-center gap-[4px] font-medium text-[20px] md:text-[24px] leading-[1.2] tracking-[-0.02em] text-lightColor py-[10px] inline-block lg:py-0"
           classList="hidden lg:flex gap-[40px] font-normal text-[16px] leading-[1.25] tracking-[-0.01em] text-lightColor mr-[92px]"
           classItem="pt-[28px] pb-[40px] inline-block"
         />
-        {isMenuOpen && <BurgerMenu toggleMenu={toggleMenu} />}
+        {isMenuOpen && <BurgerMenu isLogIn={isLogIn} toggleMenu={toggleMenu} />}
         <button
           type="button"
           onClick={() => {

@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 
-import { Icon } from "../../components";
+import { Icon } from "..";
 import { getRandomNumber } from "../../helpers";
 
-export const BgImageWrapper = () => {
+export const MovingWrapper = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [animationDuration] = useState(15);
   const [randomSum, setRandomSum] = useState(0);
@@ -52,7 +52,7 @@ export const BgImageWrapper = () => {
 
   return (
     <div
-      className="flex items-center gap-[16px] bg-lightColor rounded-[20px] p-[32px] w-[284px]"
+      className="flex items-center gap-[16px] bg-lightColor rounded-[20px] p-[32px] absolute top-0 left-[50%] w-[284px] z-[-1] overflow-hidden animate-moveBox"
       onAnimationStart={handleAnimationStart}
     >
       <div className="flex justify-center items-center w-[54px] h-[54px] rounded-[13px] bg-accentColor">
