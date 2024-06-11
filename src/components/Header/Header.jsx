@@ -22,7 +22,7 @@ export const Header = () => {
   return (
     <header className={`${isHomePage ? "pt-[32px]" : ""}`}>
       <div
-        className={`container flex flex-col items-center ${
+        className={`container flex items-center ${
           isHomePage ? "bg-transparent home-line" : "bg-accentColor"
         }`}
       >
