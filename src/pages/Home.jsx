@@ -26,6 +26,7 @@ const Home = () => {
         </NavLink>
 
         <div className="absolute bottom-[50px] right-[-50px]">
+          {/* <div className="absolute top-0 right-[-96px] w-[699px] z-[-1] overflow-hidden animate-moveBox"> */}
           <BgImageWrapper />
         </div>
       </div>

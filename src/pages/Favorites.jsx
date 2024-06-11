@@ -1,6 +1,6 @@
 const Favorites = () => {
   return (
-    <div className="container">
+    <div className="container bg-[#F3F3F3] pt-[152px] pb-[100px]">
       Favorites page
     </div>
   );

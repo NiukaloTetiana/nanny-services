@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { AuthButton, BurgerMenu, Icon, NavBar } from "../../components";
+import {
+  AuthButton,
+  BurgerMenu,
+  Icon,
+  NavBar,
+  UserBar,
+} from "../../components";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,6 +51,8 @@ export const Header = () => {
           classRegistration={`bg-accentColor rounded-[30px] px-[40px] py-[14px] w-[168px] font-medium text-[16px] leading-[125%] tracking-[-0.01em] text-lightColor hover:text-accentColor hover:bg-lightColor focus:text-accentColor focus:bg-lightColor transition duration-500 
           ${!isHomePage ? "border border-[#fbfbfb66]" : "border-none"}`}
         />
+
+        {/* <UserBar /> */}
       </div>
     </header>
   );

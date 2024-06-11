@@ -54,10 +54,10 @@ after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[137
 }
 
 .primary-btn-hover {
-  @apply relative hover:text-[#f03f3b] focus:text-[#f03f3b] active:text-[#f03f3b] transition duration-1000;
+  @apply relative hover:text-accentColor focus:text-accentColor z-[1] active:text-accentColor transition duration-1000;
 }
 .primary-btn-hover::after {
-  @apply content-[''''] absolute top-0 left-0 w-full h-full z-[-1] bg-[#fbfbfb] scale-x-[0] rounded-[30px] origin-right transition duration-1000;
+  @apply content-[''''] absolute top-0 left-0 w-full h-full z-[-1] bg-lightColor scale-x-[0] rounded-[30px] origin-right transition duration-1000;
 }
 .primary-btn-hover:hover::after,
 .primary-btn-hover:focus::after,
@@ -65,30 +65,37 @@ after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[137
   @apply origin-left scale-x-100;
 }
 
+.custom-list-spacing > li:not(:last-child) {
+  @apply mb-3;
+}
+
 @keyframes moveBox {
   0% {
     transform: translate(200px, 0);
   }
   12.5% {
-    transform: translate(400px, 159px);
+    transform: translate(400px, 200px); /* Adjusted for new container height */
   }
   25% {
-    transform: translate(200px, 361px);
+    transform: translate(200px, 400px); /* Adjusted for new container height */
   }
   37.5% {
-    transform: translate(0, 168px);
+    transform: translate(0, 300px); /* Adjusted for new container height */
   }
   50% {
-    transform: translate(280px, 0);
+    transform: translate(300px, 0); /* Adjusted for new container width */
   }
   62.5% {
-    transform: translate(400px, 180px);
+    transform: translate(
+      500px,
+      300px
+    ); /* Adjusted for new container width and height */
   }
   75% {
-    transform: translate(200px, 361px);
+    transform: translate(200px, 600px); /* Adjusted for new container height */
   }
   87.5% {
-    transform: translate(0, 120px);
+    transform: translate(0, 400px); /* Adjusted for new container height */
   }
   100% {
     transform: translate(200px, 0);
@@ -101,28 +108,44 @@ after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[137
       transform: translate(150px, 0);
     }
     12.5% {
-      transform: translate(308px, 200px);
+      transform: translate(
+        350px,
+        250px
+      ); /* Adjusted for new container height */
     }
     25% {
-      transform: translate(150px, 447px);
+      transform: translate(
+        150px,
+        500px
+      ); /* Adjusted for new container height */
     }
     37.5% {
-      transform: translate(0, 300px);
+      transform: translate(0, 400px); /* Adjusted for new container height */
     }
     50% {
-      transform: translate(200px, 0);
+      transform: translate(250px, 0); /* Adjusted for new container width */
     }
     62.5% {
-      transform: translate(308px, 250px);
+      transform: translate(
+        450px,
+        350px
+      ); /* Adjusted for new container width and height */
     }
     75% {
-      transform: translate(150px, 447px);
+      transform: translate(
+        150px,
+        700px
+      ); /* Adjusted for new container height */
     }
     87.5% {
-      transform: translate(0, 200px);
+      transform: translate(0, 450px); /* Adjusted for new container height */
     }
     100% {
       transform: translate(150px, 0);
     }
   }
+}
+
+.animate-moveBox {
+  animation: moveBox 15s linear infinite;
 }
