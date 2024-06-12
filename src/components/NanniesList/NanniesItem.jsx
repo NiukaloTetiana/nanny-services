@@ -1,9 +1,11 @@
 import { useLocalStorage } from "../../hooks";
 import { calculateAge } from "../../helpers";
 
-import { Icon } from "../../components";
+import { Icon, NanniesReviews } from "../../components";
+import { useState } from "react";
 
 export const NanniesItem = ({
+  reviews,
   avatar_url,
   name,
   about,
@@ -17,6 +19,7 @@ export const NanniesItem = ({
   characters,
 }) => {
   const [isLike, setIsLike] = useLocalStorage(`like-${name}`, false);
+  const [isShowReviews, setIsShowReviews] = useState(false);
   const age = calculateAge(birthday);
 
   const toggleLike = () => {
@@ -94,15 +97,24 @@ export const NanniesItem = ({
           </li>
         </ul>
 
-        <p className="font-normal text-[16px] leading-[1.25] text-[#11101c7f] mb-[14px]">
+        <p
+          className={`font-normal text-[16px] leading-[1.25] text-[#11101c7f] ${
+            !isShowReviews ? "mb-[14px]" : "mb-[48px]"
+          }`}
+        >
           {about}
         </p>
-        <button
-          type="button"
-          className="font-medium text-[16px] text-darkColor leading-[1.5] underline lg:hover:text-accentColor focus:text-accentColor active:text-accentColor transition duration-500"
-        >
-          Read more
-        </button>
+        {!isShowReviews && (
+          <button
+            type="button"
+            onClick={setIsShowReviews}
+            className="font-medium text-[16px] text-darkColor leading-[1.5] underline lg:hover:text-accentColor focus:text-accentColor active:text-accentColor transition duration-500"
+          >
+            Read more
+          </button>
+        )}
+
+        {isShowReviews && <NanniesReviews reviews={reviews} />}
       </div>
       <button className="absolute top-[24px] right-[24px]" onClick={toggleLike}>
         <Icon
