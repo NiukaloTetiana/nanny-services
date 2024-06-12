@@ -10,3 +10,6 @@ export * from "./Header/AuthButton.jsx";
 export * from "./AuthForm/AuthForm.jsx";
 export * from "./MovingWrapper/MovingWrapper.jsx";
 export * from "./Filter/Filter.jsx";
+export * from "./NanniesList/NanniesList.jsx";
+export * from "./NanniesList/NanniesItem.jsx";
+export * from "./LoadMoreButton/LoadMoreButton.jsx";

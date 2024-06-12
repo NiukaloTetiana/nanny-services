@@ -10,12 +10,14 @@ export default {
     extend: {
       colors: {
         accentColor: "#f03f3b",
+        whiteColor: "#fff",
         lightColor: "#fbfbfb",
         darkColor: "#11101c",
       },
       boxShadow: {
         "custom-shadow": "0px 0px 0px 2px #eca29b",
         "success-shadow": "0px 0px 0px 2px #86efac",
+        "list-shadow": "0 20px 69px 0 #00000011",
       },
 
       fontFamily: {
