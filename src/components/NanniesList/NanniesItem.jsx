@@ -1,4 +1,6 @@
 import { useLocalStorage } from "../../hooks";
+import { calculateAge } from "../../helpers";
+
 import { Icon } from "../../components";
 
 export const NanniesItem = ({
@@ -15,6 +17,7 @@ export const NanniesItem = ({
   characters,
 }) => {
   const [isLike, setIsLike] = useLocalStorage(`like-${name}`, false);
+  const age = calculateAge(birthday);
 
   const toggleLike = () => {
     setIsLike(!isLike);
@@ -66,7 +69,7 @@ export const NanniesItem = ({
         <ul className="flex flex-wrap gap-[8px] font-medium text-[16px] leading-[1.5] text-[#8a8a89] mb-[24px]">
           <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px]">
             <p>
-              Age: <span className="text-[#11101c] underline">{birthday}</span>
+              Age: <span className="text-[#11101c] underline">{age}</span>
             </p>
           </li>
           <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px]">
