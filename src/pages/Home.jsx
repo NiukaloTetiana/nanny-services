@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className="container pb-[32px] bg-accentColor lg:bg-transparent">
       <div className="home-wrapper py-[40px]">
-        <h1 className="font-medium text-[40px] leading-[1] tracking-[-0.03em] text-lightColor mb-[28px] sm-max:text-[35px] lg:text-[70px] md:w-[380px] lg:w-[517px]">
+        <h1 className="font-medium text-[40px] leading-[1] tracking-[-0.03em] text-lightColor mb-[28px] sm-max:text-[35px] lg:text-[70px] w-[280px] md:w-[380px] lg:w-[517px]">
           Make Life Easier for the Family:
         </h1>
         <p className="font-normal text-[20px] leading-[1.1] tracking-[-0.02em] text-lightColor mb-[28px] md:mb-[40px] lg:mb-[64px] sm-max:text-[18px] lg:text-[28px]">

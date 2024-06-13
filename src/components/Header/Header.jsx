@@ -45,7 +45,7 @@ export const Header = () => {
         >
           <Icon
             id="burger-menu"
-            className=" fill-lightColor md:w-[46px] md:h-[46px]"
+            className=" stroke-lightColor md:w-[46px] md:h-[46px]"
             size="32"
           />
         </button>
