@@ -20,16 +20,18 @@ export const Header = () => {
   };
 
   return (
-    <header className={`${isHomePage ? "pt-[32px]" : ""}`}>
+    <header className={`${isHomePage ? "lg:pt-[32px]" : ""}`}>
       <div
         className={`container flex items-center ${
-          isHomePage ? "bg-transparent home-line" : "bg-accentColor"
+          isHomePage
+            ? "py-[15px] bg-accentColor lg:bg-transparent home-line"
+            : "py-[15px] lg:py-0 bg-accentColor"
         }`}
       >
         <NavBar
           isLogIn={isLogIn}
           className="flex items-center justify-between text-center w-full"
-          classLogo="flex items-center gap-[4px] font-medium text-[20px] md:text-[24px] leading-[1.2] tracking-[-0.02em] text-lightColor py-[10px] inline-block lg:py-0"
+          classLogo="flex items-center gap-[4px] font-medium text-[20px] md:text-[24px] leading-[1.2] tracking-[-0.02em] text-lightColor inline-block lg:py-0"
           classList="hidden lg:flex gap-[40px] font-normal text-[16px] leading-[1.25] tracking-[-0.01em] text-lightColor mr-[92px]"
           classItem="pt-[28px] pb-[40px] inline-block"
         />

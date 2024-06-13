@@ -36,10 +36,10 @@ after:content-[''''] after:absolute after:bottom-[-12px] lg:after:bottom-[28px] 
 }
 
 .home-wrapper {
-  @apply relative py-[163px]
-before:content-[''''] before:w-[677px] before:h-[736px] before:bg-accentColor before:absolute before:top-[-88px] before:left-[-96px] before:z-[-2] before:rounded-tl-[30px] before:rounded-bl-[30px]
+  @apply relative lg:py-[163px]
+lg:before:content-[''''] lg:before:w-[677px] lg:before:h-[736px] lg:before:bg-accentColor lg:before:absolute lg:before:top-[-88px] lg:before:left-[-96px] lg:before:z-[-2] lg:before:rounded-tl-[30px] lg:before:rounded-bl-[30px]
 
-after:content-[''''] after:absolute after:top-[-88px] after:right-[-96px] after:w-[699px] after:h-[736px] after:bg-accentColor after:bg-[url('./assets/images/hero_desktop1x.jpg')] after:bg-cover after:bg-center after:z-[-2] after:rounded-tr-[30px] after:rounded-br-[30px];
+lg:after:content-[''''] lg:after:absolute lg:after:top-[-88px] lg:after:right-[-96px] lg:after:w-[699px] lg:after:h-[736px] lg:after:bg-accentColor lg:after:bg-[url('./assets/images/hero_desktop1x.jpg')] lg:after:bg-cover lg:after:bg-center lg:after:z-[-2] lg:after:rounded-tr-[30px] lg:after:rounded-br-[30px];
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
