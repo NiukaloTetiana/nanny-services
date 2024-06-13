@@ -1,32 +1,16 @@
-import { useEffect } from "react";
+import { useRef } from "react";
 
+import { useBackdropEffect } from "../../hooks";
 import { AuthButton, Icon, NavBar, UserBar } from "../../components";
 
 export const BurgerMenu = ({ isLogIn, toggleMenu }) => {
-  const handleBackdropClick = (event) => {
-    if (event.currentTarget === event.target) {
-      toggleMenu();
-    }
-  };
+  const backdropRef = useRef(null);
 
-  useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.code === "Escape") {
-        toggleMenu();
-      }
-    };
-    window.addEventListener("keydown", handleEscape);
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      window.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "auto";
-    };
-  }, [toggleMenu]);
+  useBackdropEffect(toggleMenu, backdropRef);
 
   return (
     <div
-      onClick={handleBackdropClick}
+      ref={backdropRef}
       className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 lg:hidden"
     >
       <div className="relative flex flex-col justify-start items-center gap-[45px] bg-accentColor px-[24px] py-[50px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-full">
