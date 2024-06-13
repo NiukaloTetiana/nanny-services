@@ -24,7 +24,7 @@ export const Header = () => {
       <div
         className={`container flex items-center ${
           isHomePage
-            ? "py-[15px] bg-accentColor lg:bg-transparent home-line"
+            ? "py-[15px] lg:py-0 bg-accentColor lg:bg-transparent home-line"
             : "py-[15px] lg:py-0 bg-accentColor"
         }`}
       >
