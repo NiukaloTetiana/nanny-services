@@ -93,13 +93,12 @@ export const NanniesItem = ({
               className="inline-block bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[10px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md"
             >
               <p>
-                {title}
+                {title}{" "}
                 <span
                   className={`text-[#11101c] ${
                     title === "Age:" ? "underline" : ""
                   }`}
                 >
-                  {" "}
                   {value}
                 </span>
               </p>
