@@ -14,3 +14,4 @@ export * from "./NanniesList/NanniesList.jsx";
 export * from "./NanniesList/NanniesItem.jsx";
 export * from "./LoadMoreButton/LoadMoreButton.jsx";
 export * from "./NanniesList/NanniesReviews.jsx";
+export * from "./AppointmentForm/AppointmentForm.jsx";

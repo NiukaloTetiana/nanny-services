@@ -1,14 +1,17 @@
 import { useRef } from "react";
+import ReactDOM from "react-dom";
 
 import { useBackdropEffect } from "../../hooks";
 import { Icon } from "../../components";
+
+const modalRoot = document.querySelector("#modal-root");
 
 export const Modal = ({ children, toggleModal }) => {
   const backdropRef = useRef(null);
 
   useBackdropEffect(toggleModal, backdropRef);
 
-  return (
+  return ReactDOM.createPortal(
     <div
       ref={backdropRef}
       className="flex items-center justify-center fixed bg-[#0b0b0b99] backdrop-blur-sm w-full h-full left-0 top-0 z-50"
@@ -29,6 +32,7 @@ export const Modal = ({ children, toggleModal }) => {
         </button>
         {children}
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 };

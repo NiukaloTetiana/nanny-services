@@ -27,7 +27,7 @@ export const NanniesItem = ({
     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
   };
 
-  const capitalizedCharacters = characters.map(capitalize);
+  const capitalizedCharacters = characters.map(capitalize).join(", ");
 
   const toggleLike = () => {
     setIsLike(!isLike);
@@ -81,34 +81,29 @@ export const NanniesItem = ({
         </h3>
 
         <ul className="flex flex-col md:flex-row md:flex-wrap gap-[8px] font-medium text-[14px] md:text-[16px] leading-[1.5] text-[#8a8a89] mb-[24px]">
-          <li className="bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[10px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md">
-            <p>
-              Age: <span className="text-[#11101c] underline">{age}</span>
-            </p>
-          </li>
-          <li className="bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[12px] py-[10px] md:px-[12px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md">
-            <p>
-              Experience: <span className="text-[#11101c]">{experience}</span>
-            </p>
-          </li>
-          <li className="bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[12px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md">
-            <p>
-              Kids Age: <span className="text-[#11101c]">{kids_age}</span>
-            </p>
-          </li>
-          <li className="bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[12px] md:py-[5px] lg:px-[16px] lg:py-[8px] break-words shadow-md">
-            <p>
-              Characters:{" "}
-              <span className="text-[#11101c]">
-                {capitalizedCharacters.join(", ")}
-              </span>
-            </p>
-          </li>
-          <li className="bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[12px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md">
-            <p>
-              Education: <span className="text-[#11101c]">{education}</span>
-            </p>
-          </li>
+          {[
+            { title: "Age:", value: age },
+            { title: "Experience:", value: experience },
+            { title: "Kids Age:", value: kids_age },
+            { title: "Characters:", value: capitalizedCharacters },
+            { title: "Education:", value: education },
+          ].map(({ title, value }, index) => (
+            <li
+              key={index}
+              className="inline-block bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[10px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md"
+            >
+              <p>
+                {title}
+                <span
+                  className={`text-[#11101c] ${
+                    title === "Age:" ? "underline" : ""
+                  }`}
+                >
+                  {value}
+                </span>
+              </p>
+            </li>
+          ))}
         </ul>
 
         <p
@@ -128,7 +123,13 @@ export const NanniesItem = ({
           </button>
         )}
 
-        {isShowReviews && <NanniesReviews reviews={reviews} />}
+        {isShowReviews && (
+          <NanniesReviews
+            reviews={reviews}
+            avatar_url={avatar_url}
+            name={name}
+          />
+        )}
       </div>
       <button className="absolute top-[24px] right-[24px]" onClick={toggleLike}>
         <Icon

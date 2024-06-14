@@ -1,7 +1,7 @@
-import { Icon, Modal } from "..";
+import { AppointmentForm, Icon, Modal } from "..";
 import { useModal } from "../../hooks";
 
-export const NanniesReviews = ({ reviews }) => {
+export const NanniesReviews = ({ reviews, name, avatar_url }) => {
   const [isOpenModal, toggleModal] = useModal();
   const getFirstLetter = (reviewer) => reviewer.charAt(0);
 
@@ -34,7 +34,11 @@ export const NanniesReviews = ({ reviews }) => {
         ))}
       </ul>
 
-      {isOpenModal && <Modal toggleModal={toggleModal}></Modal>}
+      {isOpenModal && (
+        <Modal toggleModal={toggleModal}>
+          <AppointmentForm avatar_url={avatar_url} name={name} />
+        </Modal>
+      )}
       <button
         onClick={toggleModal}
         type="button"
