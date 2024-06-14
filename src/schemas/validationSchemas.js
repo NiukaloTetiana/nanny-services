@@ -45,12 +45,15 @@ export const appointmentSchema = yup.object().shape({
     .string()
     .required("Phone number is required")
     .min(14, "Enter a valid phone number")
-    .max(14, "Enter a valid phone number"),
+    .max(16, "Enter a valid phone number"),
   age: yup
-    .string()
+    .number()
+    .typeError("Age must be a number")
     .required("Age is required")
+    .positive("Age must be a positive number")
+    .integer("Age must be an integer")
     .min(1, "Enter a valid age")
-    .max(2, "Enter a valid age"),
+    .max(100, "Enter a valid age"),
   time: yup
     .date()
     .required("Meeting time is required")
@@ -70,5 +73,5 @@ export const appointmentSchema = yup.object().shape({
     .string()
     .required("Comment is required.")
     .min(3, "Min length must be more than 3 symbols")
-    .max(64, "Max length must be less than 64 symbols"),
+    .max(200, "Max length must be less than 200 symbols"),
 });

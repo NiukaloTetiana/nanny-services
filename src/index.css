@@ -54,7 +54,7 @@ lg:after:content-[''''] lg:after:absolute lg:after:top-[-88px] lg:after:right-[-
 
 .home-line {
   @apply relative
-after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[1376px] after:h-[1px] after:bg-[#fbfbfb66] after:translate-x-[-50%];
+after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[100vw] lg:after:w-[1376px] after:h-[1px] after:bg-[#fbfbfb66] after:translate-x-[-50%];
 }
 
 .primary-btn-hover {
@@ -107,4 +107,30 @@ after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[137
 
 .animate-moveBox {
   animation: moveBox 15s linear infinite;
+}
+
+.scrollbar {
+  --sb-track-color: #fbfbfb;
+  --sb-thumb-color: #f03f3b;
+  --sb-size: 6px;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 13px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 13px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .scrollbar {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
 }
