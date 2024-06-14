@@ -99,6 +99,7 @@ export const NanniesItem = ({
                     title === "Age:" ? "underline" : ""
                   }`}
                 >
+                  {" "}
                   {value}
                 </span>
               </p>
