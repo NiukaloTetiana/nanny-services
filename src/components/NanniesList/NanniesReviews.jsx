@@ -7,7 +7,7 @@ export const NanniesReviews = ({ reviews }) => {
 
   return (
     <>
-      <ul className="mb-[48px]">
+      <ul className="mb-[30px] lg:mb-[48px]">
         {reviews.map(({ reviewer, rating, comment }, index) => (
           <li key={index} className="mb-[25px]">
             <div className="flex gap-[12px] mb-[18px]">
@@ -38,7 +38,7 @@ export const NanniesReviews = ({ reviews }) => {
       <button
         onClick={toggleModal}
         type="button"
-        className="w-[215px] h-[48px] py-[14px] px-[26px] bg-accentColor border border-transparent rounded-[30px] shadow-md font-medium text-[16px] text-lightColor leading-[1.25] tracking-[-0.01em] text-center hover:text-accentColor focus:text-accentColor hover:bg-lightColor focus:bg-lightColor focus:border-[#fbfbfb66] hover:border-[#fbfbfb66] transition duration-500"
+        className="mx-auto block md:inline-block w-[215px] h-[48px] py-[14px] px-[26px] bg-accentColor border border-transparent rounded-[30px] shadow-md font-medium text-[16px] text-lightColor leading-[1.25] tracking-[-0.01em] text-center hover:text-accentColor focus:text-accentColor hover:bg-lightColor focus:bg-lightColor focus:border-[#fbfbfb66] hover:border-[#fbfbfb66] transition duration-500"
       >
         Make an appointment
       </button>

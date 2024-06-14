@@ -22,40 +22,51 @@ export const NanniesItem = ({
   const [isShowReviews, setIsShowReviews] = useState(false);
   const age = calculateAge(birthday);
 
+  const capitalize = (word) => {
+    if (!word) return "";
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  };
+
+  const capitalizedCharacters = characters.map(capitalize);
+
   const toggleLike = () => {
     setIsLike(!isLike);
   };
 
   return (
-    <li className="relative flex gap-[24px] w-full bg-lightColor rounded-[24px] p-[24px] height-[318px] shadow-md">
-      <div className="relative flex shrink-0 h-[120px] p-[12px] border-2 border-[#f03f3b33] rounded-[30px]">
+    <li className="relative flex flex-col justify-center items-center md:items-start md:flex-row gap-[50px] md:gap-[24px] w-full bg-lightColor rounded-[24px] p-[24px] height-[318px] shadow-md transition-transform transform hover:scale-105 focus:scale-105">
+      <div className="relative flex shrink-0 h-[96px] w-[96px] md:h-[120px] md:w-[120px] p-[12px] border-2 border-[#f03f3b33] rounded-[30px]">
         <img
           src={avatar_url}
           alt={name}
-          className="rounded-[15px]"
-          width="96"
-          height="96"
+          className="rounded-[15px] md:w-[96px] md:h-[96px]"
+          width="72"
+          height="72"
         />
 
-        <div className="absolute top-[9px] right-[14px] w-[14px] h-[14px] rounded-[50%] bg-lightColor before:content-[''] before:block before:absolute before:top-[50%] before:left-[50%] before:w-[10px] before:h-[10px] before:rounded-[50%] before:bg-[#38cd3e] before:transform before:-translate-x-1/2 before:-translate-y-1/2"></div>
+        <div className="absolute top-[9px] right-[14px] w-[12px] h-[12px] md:w-[14px] md:h-[14px] rounded-[50%] bg-lightColor before:content-[''] before:block before:absolute before:top-[50%] before:left-[50%] before:w-[8px] before:h-[8px] md:before:w-[10px] md:before:h-[10px] before:rounded-[50%] before:bg-[#38cd3e] before:transform before:-translate-x-1/2 before:-translate-y-1/2"></div>
       </div>
 
       <div>
-        <div className="flex justify-between mb-[8px] mr-[98px]">
-          <p className="font-medium text-[16px] leading-[1.5] text-[#8a8a89]">
+        <div className="flex justify-end md:justify-between md:mb-[12px] lg:mb-[8px] md:mr-[45px] lg:mr-[98px]">
+          <p className="absolute top-[110px] left-[24px] md:static font-medium leading-[1.5] text-[#8a8a89] text-[14px] md:text-[14px] lg:text-[16px]">
             Nanny
           </p>
-          <ul className="flex items-center gap-[32px] font-medium text-[16px] leading-[1.5] text-darkColor">
+          <ul className="flex flex-col md:flex-row md:items-center gap-[2px] md:gap-[15px] lg:gap-[32px] mb-[15px] md:mb-0 font-medium text-[14px] md:text-[14px] lg:text-[16px] leading-[1.5] text-darkColor">
             <li className="flex items-center gap-[5px]">
               <Icon
                 id="location"
-                size="16"
-                className="stroke-darkColor fill-none"
+                size="14"
+                className="stroke-darkColor fill-none lg:size-[16px]"
               />
               {location}
             </li>
             <li className="flex items-center gap-[5px]">
-              <Icon id="star" size="16" className="fill-[#FFC531]" />
+              <Icon
+                id="star"
+                size="14"
+                className="fill-[#FFC531] lg:size-[16px]"
+              />
               Rating: {rating}
             </li>
             <li>
@@ -65,32 +76,35 @@ export const NanniesItem = ({
           </ul>
         </div>
 
-        <h3 className="font-medium text-[24px] leading-[1] text-darkColor mb-[24px]">
+        <h3 className="absolute top-[135px] left-[24px] md:static font-medium text-[18px] md:text-[20px] lg:text-[24px] leading-[1] text-darkColor md:mb-[24px]">
           {name}
         </h3>
 
-        <ul className="flex flex-wrap gap-[8px] font-medium text-[16px] leading-[1.5] text-[#8a8a89] mb-[24px]">
-          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px] shadow-md">
+        <ul className="flex flex-col md:flex-row md:flex-wrap gap-[8px] font-medium text-[14px] md:text-[16px] leading-[1.5] text-[#8a8a89] mb-[24px]">
+          <li className="bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[10px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md">
             <p>
               Age: <span className="text-[#11101c] underline">{age}</span>
             </p>
           </li>
-          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px] shadow-md">
+          <li className="bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[12px] py-[10px] md:px-[12px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md">
             <p>
               Experience: <span className="text-[#11101c]">{experience}</span>
             </p>
           </li>
-          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px] shadow-md">
+          <li className="bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[12px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md">
             <p>
               Kids Age: <span className="text-[#11101c]">{kids_age}</span>
             </p>
           </li>
-          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px] shadow-md">
+          <li className="bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[12px] md:py-[5px] lg:px-[16px] lg:py-[8px] break-words shadow-md">
             <p>
-              Characters: <span className="text-[#11101c]">{characters}</span>
+              Characters:{" "}
+              <span className="text-[#11101c]">
+                {capitalizedCharacters.join(", ")}
+              </span>
             </p>
           </li>
-          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px] shadow-md">
+          <li className="bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[12px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md">
             <p>
               Education: <span className="text-[#11101c]">{education}</span>
             </p>
@@ -99,7 +113,7 @@ export const NanniesItem = ({
 
         <p
           className={`font-normal text-[16px] leading-[1.25] text-[#11101c7f] ${
-            !isShowReviews ? "mb-[14px]" : "mb-[48px]"
+            !isShowReviews ? "mb-[14px]" : "mb-[30px] lg:mb-[48px]"
           }`}
         >
           {about}
