@@ -20,12 +20,16 @@ export const Header = () => {
   };
 
   return (
-    <header className={`${isHomePage ? "lg:pt-[32px]" : ""}`}>
+    <header
+      className={`${
+        isHomePage
+          ? "lg:pt-[32px] bg-accentColor lg:bg-transparent"
+          : "bg-accentColor"
+      }`}
+    >
       <div
         className={`container flex items-center ${
-          isHomePage
-            ? "py-[15px] lg:py-0 bg-accentColor lg:bg-transparent home-line"
-            : "py-[15px] lg:py-0 bg-accentColor"
+          isHomePage ? "py-[15px] lg:py-0 home-line" : "py-[15px] lg:py-0"
         }`}
       >
         <NavBar

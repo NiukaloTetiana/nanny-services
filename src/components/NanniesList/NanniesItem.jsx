@@ -27,7 +27,7 @@ export const NanniesItem = ({
   };
 
   return (
-    <li className="relative flex gap-[24px] w-full bg-lightColor rounded-[24px] p-[24px] height-[318px]">
+    <li className="relative flex gap-[24px] w-full bg-lightColor rounded-[24px] p-[24px] height-[318px] shadow-md">
       <div className="relative flex shrink-0 h-[120px] p-[12px] border-2 border-[#f03f3b33] rounded-[30px]">
         <img
           src={avatar_url}
@@ -70,27 +70,27 @@ export const NanniesItem = ({
         </h3>
 
         <ul className="flex flex-wrap gap-[8px] font-medium text-[16px] leading-[1.5] text-[#8a8a89] mb-[24px]">
-          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px]">
+          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px] shadow-md">
             <p>
               Age: <span className="text-[#11101c] underline">{age}</span>
             </p>
           </li>
-          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px]">
+          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px] shadow-md">
             <p>
               Experience: <span className="text-[#11101c]">{experience}</span>
             </p>
           </li>
-          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px]">
+          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px] shadow-md">
             <p>
               Kids Age: <span className="text-[#11101c]">{kids_age}</span>
             </p>
           </li>
-          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px]">
+          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px] shadow-md">
             <p>
               Characters: <span className="text-[#11101c]">{characters}</span>
             </p>
           </li>
-          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px]">
+          <li className="bg-[#f3f3f3] rounded-[24px] px-[16px] py-[8px] height-[40px] shadow-md">
             <p>
               Education: <span className="text-[#11101c]">{education}</span>
             </p>
