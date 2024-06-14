@@ -30,6 +30,10 @@ input {
   @apply outline-transparent;
 }
 
+.form-mb > *:not(:nth-last-child(-n + 2)) {
+  @apply mb-[16px];
+}
+
 .active {
   @apply relative
 after:content-[''''] after:absolute after:bottom-[-12px] lg:after:bottom-[28px] after:left-[50%] after:w-[8px] after:h-[8px] after:rounded-[50%] after:bg-[#fff] after:translate-x-[-50%];

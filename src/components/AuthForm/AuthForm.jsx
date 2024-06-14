@@ -26,7 +26,7 @@ export const AuthForm = ({ registration, onClick }) => {
 
   const inputClass = (fieldName) => {
     const baseClass =
-      "w-full bg-transparent border border-[#11101c19] rounded-[12px] px-[18px] py-[14px] lg:py-[16px] font-normal text-[14px] lg:text-[16px] leading-[1.25] text-darkColor placeholder:text-darkColor hover:shadow-custom-shadow focus:shadow-custom-shadow duration-300";
+      "w-full bg-transparent border border-[#11101c19] rounded-[12px] px-[18px] py-[14px] lg:py-[16px] font-normal text-[14px] lg:text-[16px] leading-[1.25] text-darkColor placeholder:text-darkColor hover:shadow-custom-shadow focus:shadow-custom-shadow transition duration-300";
     const errorClass = "border-red-700";
     const successClass =
       "border-green-700 hover:shadow-success-shadow focus:shadow-success-shadow";
