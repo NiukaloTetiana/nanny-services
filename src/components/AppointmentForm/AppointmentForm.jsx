@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -7,11 +8,14 @@ export const AppointmentForm = ({ avatar_url, name }) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, dirtyFields },
   } = useForm({
     mode: "onChange",
     resolver: yupResolver(appointmentSchema),
   });
+
+  const [phone, setPhone] = useState("+380");
 
   const inputClass = (fieldName) => {
     const baseClass =
@@ -20,35 +24,44 @@ export const AppointmentForm = ({ avatar_url, name }) => {
     const successClass =
       "border-green-700 hover:shadow-success-shadow focus:shadow-success-shadow";
 
-    if (errors[fieldName]?.message && dirtyFields[fieldName]) {
+    if (errors[fieldName] && dirtyFields[fieldName]) {
       return `${baseClass} ${errorClass}`;
     }
-    if (!errors[fieldName]?.message && dirtyFields[fieldName]) {
+    if (!errors[fieldName] && dirtyFields[fieldName]) {
       return `${baseClass} ${successClass}`;
     }
     return baseClass;
   };
 
   const renderMessage = (fieldName) => {
-    if (errors[fieldName]?.message && dirtyFields[fieldName]) {
+    if (errors[fieldName] && dirtyFields[fieldName]) {
       return (
         <p className="text-red-700 text-[10px] font-normal absolute bottom-[-6px] left-[4px] px-[4px] bg-lightColor">
-          {errors[fieldName]?.message}
+          {errors[fieldName].message}
         </p>
       );
     }
-    return (
-      <p className="text-green-700 text-[10px] font-normal absolute bottom-[-6px] left-[4px] px-[4px] bg-lightColor">
-        {!errors[fieldName]?.message && dirtyFields[fieldName]
-          ? `${fieldName.charAt(0).toUpperCase()}${fieldName.slice(
-              1
-            )} is entered correct`
-          : ""}
-      </p>
-    );
+    if (!errors[fieldName] && dirtyFields[fieldName]) {
+      return (
+        <p className="text-green-700 text-[10px] font-normal absolute bottom-[-6px] left-[4px] px-[4px] bg-lightColor">
+          {`${fieldName.charAt(0).toUpperCase()}${fieldName.slice(
+            1
+          )} is entered correctly`}
+        </p>
+      );
+    }
+    return null;
   };
 
-  const inputClassName = (fieldName) => inputClass(fieldName);
+  const handlePhoneChange = (e) => {
+    const inputValue = e.target.value.replace(/\D/g, "");
+    const formattedValue = "+380 " + inputValue.slice(3);
+    setPhone(formattedValue);
+    setValue("phone", formattedValue, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+  };
 
   return (
     <div className="overflow-y-auto max-h-[80vh] px-[4px] scrollbar">
@@ -73,8 +86,9 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           <p className="font-medium text-[12px] leading-[1.3] text-[#8a8a89] md:mb-[4px]">
             Your nanny
           </p>
-          <p className="font-medium text-[14px] md:text-[16px] leading-[1.5] text-darkColor"></p>
-          {name}
+          <p className="font-medium text-[14px] md:text-[16px] leading-[1.5] text-darkColor">
+            {name}
+          </p>
         </div>
       </div>
 
@@ -89,7 +103,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
             type="text"
             autoComplete="street-address"
             placeholder="Address"
-            className={inputClassName("address")}
+            className={inputClass("address")}
           />
           {renderMessage("address")}
         </div>
@@ -98,8 +112,10 @@ export const AppointmentForm = ({ avatar_url, name }) => {
             {...register("phone")}
             name="phone"
             type="tel"
-            placeholder="+380"
-            className={inputClassName("phone")}
+            placeholder="+380 "
+            value={phone}
+            className={inputClass("phone")}
+            onChange={handlePhoneChange}
           />
           {renderMessage("phone")}
         </div>
@@ -110,7 +126,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
             type="number"
             min={1}
             placeholder="Child's age"
-            className={inputClassName("age")}
+            className={inputClass("age")}
           />
           {renderMessage("age")}
         </div>
@@ -120,7 +136,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
             name="time"
             type="time"
             placeholder="00:00"
-            className={inputClassName("time")}
+            className={inputClass("time")}
           />
           {renderMessage("time")}
         </div>
@@ -131,7 +147,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
             type="email"
             autoComplete="email"
             placeholder="Email"
-            className={inputClassName("email")}
+            className={inputClass("email")}
           />
           {renderMessage("email")}
         </div>
@@ -142,7 +158,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
             type="name"
             autoComplete="name"
             placeholder="Father's or mother's name"
-            className={inputClassName("name")}
+            className={inputClass("name")}
           />
           {renderMessage("name")}
         </div>
@@ -150,7 +166,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           <div className="rounded-[12px]">
             <textarea
               {...register("comment")}
-              className={`overflow-y-auto align-top resize-none outline-none h-[116px] scrollbar ${inputClassName(
+              className={`overflow-y-auto align-top resize-none outline-none h-[116px] scrollbar ${inputClass(
                 "comment"
               )}`}
               name="comment"

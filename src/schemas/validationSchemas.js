@@ -45,7 +45,7 @@ export const appointmentSchema = yup.object().shape({
     .string()
     .required("Phone number is required")
     .min(14, "Enter a valid phone number")
-    .max(16, "Enter a valid phone number"),
+    .max(14, "Enter a valid phone number"),
   age: yup
     .number()
     .typeError("Age must be a number")
