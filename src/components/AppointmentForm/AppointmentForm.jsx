@@ -15,7 +15,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
 
   const inputClass = (fieldName) => {
     const baseClass =
-      "w-full mb-[16px] bg-transparent border rounded-[12px] px-[18px] py-[14px] lg:py-[16px] font-normal text-[14px] lg:text-[16px] leading-[1.25] text-darkColor placeholder:text-darkColor hover:shadow-custom-shadow focus:shadow-custom-shadow transition duration-300";
+      "w-full bg-transparent border rounded-[12px] px-[18px] py-[14px] lg:py-[16px] font-normal text-[14px] lg:text-[16px] leading-[1.25] text-darkColor placeholder:text-darkColor hover:shadow-custom-shadow focus:shadow-custom-shadow transition duration-300";
     const errorClass = "border-red-700";
     const successClass =
       "border-green-700 hover:shadow-success-shadow focus:shadow-success-shadow";
@@ -32,13 +32,13 @@ export const AppointmentForm = ({ avatar_url, name }) => {
   const renderMessage = (fieldName) => {
     if (errors[fieldName]?.message && dirtyFields[fieldName]) {
       return (
-        <p className="text-red-700 text-[10px] font-normal absolute bottom-[10px] left-[4px] px-[4px] bg-lightColor">
+        <p className="text-red-700 text-[10px] font-normal absolute bottom-[-6px] left-[4px] px-[4px] bg-lightColor">
           {errors[fieldName]?.message}
         </p>
       );
     }
     return (
-      <p className="text-green-700 text-[10px] font-normal absolute bottom-[10px] left-[4px] px-[4px] bg-lightColor">
+      <p className="text-green-700 text-[10px] font-normal absolute bottom-[-6px] left-[4px] px-[4px] bg-lightColor">
         {!errors[fieldName]?.message && dirtyFields[fieldName]
           ? `${fieldName.charAt(0).toUpperCase()}${fieldName.slice(
               1
@@ -65,7 +65,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
         <img
           src={avatar_url}
           alt={name}
-          className="rounded-[15px] md:w-[44px] md:h-[44px] "
+          className="rounded-[15px] md:w-[44px] md:h-[44px]"
           width="38"
           height="38"
         />
@@ -82,7 +82,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
         className="flex flex-wrap gap-x-[8px] w-[472px]"
         onSubmit={handleSubmit((data) => console.log(data))}
       >
-        <div className="relative w-[232px]">
+        <div className="relative w-[232px] mb-[16px]">
           <input
             {...register("address")}
             name="address"
@@ -93,7 +93,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("address")}
         </div>
-        <div className="relative w-[232px]">
+        <div className="relative w-[232px] mb-[16px]">
           <input
             {...register("phone")}
             name="phone"
@@ -103,7 +103,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("phone")}
         </div>
-        <div className="relative w-[232px]">
+        <div className="relative w-[232px] mb-[16px]">
           <input
             {...register("age")}
             name="age"
@@ -114,7 +114,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("age")}
         </div>
-        <div className="relative w-[232px]">
+        <div className="relative w-[232px] mb-[16px]">
           <input
             {...register("time")}
             name="time"
@@ -124,7 +124,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("time")}
         </div>
-        <div className="relative w-full">
+        <div className="relative w-full mb-[16px]">
           <input
             {...register("email")}
             name="email"
@@ -135,7 +135,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("email")}
         </div>
-        <div className="relative w-full">
+        <div className="relative w-full mb-[16px]">
           <input
             {...register("name")}
             name="name"
@@ -146,15 +146,17 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("name")}
         </div>
-        <div className="relative w-full">
-          <textarea
-            {...register("comment")}
-            className="overflow-hidden resize-none outline-none h-[116px] w-full bg-transparent border border-[#11101c19] rounded-[12px] px-[18px] py-[14px] lg:py-[16px] font-normal text-[14px] lg:text-[16px] leading-[1.25] text-darkColor placeholder:text-darkColor hover:shadow-custom-shadow focus:shadow-custom-shadow transition duration-300 mb-[40px]"
-            name="comment"
-            id="comment"
-            rows="5"
-            placeholder="Comment"
-          />
+        <div className="relative w-full mb-[40px]">
+          <div className="overflow-hidden rounded-[12px]">
+            <textarea
+              {...register("comment")}
+              className="overflow-y-auto align-top resize-none outline-none h-[116px] w-full bg-transparent border border-[#11101c19] rounded-[12px] px-[18px] py-[14px] lg:py-[16px] font-normal text-[14px] lg:text-[16px] leading-[1.25] text-darkColor placeholder:text-darkColor hover:shadow-custom-shadow focus:shadow-custom-shadow transition duration-300 scrollbar"
+              name="comment"
+              id="comment"
+              rows="5"
+              placeholder="Comment"
+            />
+          </div>
           {renderMessage("comment")}
         </div>
 
