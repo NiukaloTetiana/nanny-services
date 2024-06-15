@@ -39,8 +39,8 @@ export const appointmentSchema = yup.object().shape({
   address: yup
     .string()
     .required("Address is required")
-    .min(5, "Min length must be more than 5 symbols")
-    .max(60, "Max length must be less than 60 symbols"),
+    .min(5, "Min length must be more than 5 chars")
+    .max(60, "Max length must be less than 60 chars"),
   phone: yup
     .string()
     .required("Phone number is required")
@@ -63,15 +63,15 @@ export const appointmentSchema = yup.object().shape({
     .required("Email is required")
     .email("Enter a valid email")
     .matches(emailRegExp, "Enter a valid email")
-    .max(64, "Max length must be less than 64 symbols"),
+    .max(64, "Max length must be less than 64 chars"),
   name: yup
     .string()
     .required("Name is required")
-    .min(2, "Min length must be more than 2 symbols")
-    .max(32, "Max length must be less than 32 symbols"),
+    .min(2, "Min length must be more than 2 chars")
+    .max(32, "Max length must be less than 32 chars"),
   comment: yup
     .string()
-    .required("Comment is required.")
-    .min(3, "Min length must be more than 3 symbols")
-    .max(200, "Max length must be less than 200 symbols"),
+    .required("Comment is required")
+    .min(3, "Min length must be more than 3 chars")
+    .max(200, "Max length must be less than 200 chars"),
 });

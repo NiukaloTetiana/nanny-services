@@ -51,7 +51,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
   const inputClassName = (fieldName) => inputClass(fieldName);
 
   return (
-    <div className="overflow-y-auto max-h-[80vh] px-[5px] scrollbar">
+    <div className="overflow-y-auto max-h-[80vh] px-[4px] scrollbar">
       <h2 className="w-full md:w-[350px] lg:w-[450px] font-medium text-[30px] leading-[1.2] tracking-[-0.02em] text-darkColor mb-[15px] md:mb-[20px] sm-max:text-[25px] lg:text-[40px]">
         Make an appointment with a babysitter
       </h2>
@@ -147,10 +147,12 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           {renderMessage("name")}
         </div>
         <div className="relative w-full mb-[40px]">
-          <div className="overflow-hidden rounded-[12px]">
+          <div className="rounded-[12px]">
             <textarea
               {...register("comment")}
-              className="overflow-y-auto align-top resize-none outline-none h-[116px] w-full bg-transparent border border-[#11101c19] rounded-[12px] px-[18px] py-[14px] lg:py-[16px] font-normal text-[14px] lg:text-[16px] leading-[1.25] text-darkColor placeholder:text-darkColor hover:shadow-custom-shadow focus:shadow-custom-shadow transition duration-300 scrollbar"
+              className={`overflow-y-auto align-top resize-none outline-none h-[116px] scrollbar ${inputClassName(
+                "comment"
+              )}`}
               name="comment"
               id="comment"
               rows="5"

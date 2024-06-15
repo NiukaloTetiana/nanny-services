@@ -110,9 +110,10 @@ after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[100
 }
 
 .scrollbar {
-  --sb-track-color: #fbfbfb;
+  --sb-track-color: #f877757b;
   --sb-thumb-color: #f03f3b;
   --sb-size: 6px;
+  --sb-margin: 20px;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -121,12 +122,14 @@ after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[100
 
 .scrollbar::-webkit-scrollbar-track {
   background: var(--sb-track-color);
-  border-radius: 13px;
+  border-radius: 12px;
+  margin-top: var(--sb-margin);
+  margin-bottom: var(--sb-margin);
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
-  border-radius: 13px;
+  border-radius: 12px;
 }
 
 @supports not selector(::-webkit-scrollbar) {
