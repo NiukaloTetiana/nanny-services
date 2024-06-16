@@ -1,21 +1,26 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 
 import { appointmentSchema } from "../../schemas/validationSchemas";
+import { formatPhoneNumber } from "../../helpers";
+import { Icon } from "../../components";
 
 export const AppointmentForm = ({ avatar_url, name }) => {
+  const [phone, setPhone] = useState("+380 ");
+
   const {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors, dirtyFields },
   } = useForm({
     mode: "onChange",
     resolver: yupResolver(appointmentSchema),
   });
-
-  const [phone, setPhone] = useState("+380");
 
   const inputClass = (fieldName) => {
     const baseClass =
@@ -53,16 +58,6 @@ export const AppointmentForm = ({ avatar_url, name }) => {
     return null;
   };
 
-  const handlePhoneChange = (e) => {
-    const inputValue = e.target.value.replace(/\D/g, "");
-    const formattedValue = "+380 " + inputValue.slice(3);
-    setPhone(formattedValue);
-    setValue("phone", formattedValue, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
-  };
-
   return (
     <div className="overflow-y-auto max-h-[80vh] px-[4px] scrollbar">
       <h2 className="w-full md:w-[350px] lg:w-[450px] font-medium text-[30px] leading-[1.2] tracking-[-0.02em] text-darkColor mb-[15px] md:mb-[20px] sm-max:text-[25px] lg:text-[40px]">
@@ -93,10 +88,10 @@ export const AppointmentForm = ({ avatar_url, name }) => {
       </div>
 
       <form
-        className="flex flex-wrap gap-x-[8px] w-[472px]"
+        className="flex flex-col md:flex-row md:flex-wrap gap-x-[8px] w-full md:w-[472px]"
         onSubmit={handleSubmit((data) => console.log(data))}
       >
-        <div className="relative w-[232px] mb-[16px]">
+        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px] z-[1]">
           <input
             {...register("address")}
             name="address"
@@ -107,19 +102,19 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("address")}
         </div>
-        <div className="relative w-[232px] mb-[16px]">
+        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px] z-[1]">
           <input
             {...register("phone")}
             name="phone"
             type="tel"
-            placeholder="+380 "
             value={phone}
             className={inputClass("phone")}
-            onChange={handlePhoneChange}
+            autoComplete="tel"
+            onChange={(e) => formatPhoneNumber(e, setPhone, setValue)}
           />
           {renderMessage("phone")}
         </div>
-        <div className="relative w-[232px] mb-[16px]">
+        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px] z-[1]">
           <input
             {...register("age")}
             name="age"
@@ -130,17 +125,39 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("age")}
         </div>
-        <div className="relative w-[232px] mb-[16px]">
-          <input
-            {...register("time")}
+
+        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px] z-[1]">
+          <Controller
+            control={control}
             name="time"
-            type="time"
-            placeholder="00:00"
-            className={inputClass("time")}
+            render={({ field: { value, onChange } }) => (
+              <DatePicker
+                selected={value}
+                onChange={(date) => {
+                  onChange(date);
+                }}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={30}
+                timeCaption="Meeting time"
+                timeFormat="HH:mm"
+                dateFormat="HH:mm"
+                placeholderText="00:00"
+                className={`${inputClass("time")} `}
+                calendarClassName="w-[151px] h-[180px] bg-white shadow-datepicker-shadow rounded-[12px] p-[16px] font-medium text-[16px] leading-[1.5] text-darkColor overflow-y-auto scrollbar custom-time-select"
+              />
+            )}
           />
-          {renderMessage("time")}
+          <div className="absolute right-[18px] top-0 flex items-center h-full pointer-events-none">
+            <Icon
+              id="clock"
+              size="20"
+              className="stroke-darkColor fill-none group-focus:fill-[#fbfbfb66] transition duration-300"
+            />
+          </div>
         </div>
-        <div className="relative w-full mb-[16px]">
+
+        <div className="relative w-full mb-[8px] md:mb-[16px] z-[1]">
           <input
             {...register("email")}
             name="email"
@@ -151,7 +168,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("email")}
         </div>
-        <div className="relative w-full mb-[16px]">
+        <div className="relative w-full mb-[8px] md:mb-[16px] z-[1]">
           <input
             {...register("name")}
             name="name"
@@ -162,7 +179,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("name")}
         </div>
-        <div className="relative w-full mb-[40px]">
+        <div className="relative w-full mb-[20px] md:mb-[40px] z-[1]">
           <div className="rounded-[12px]">
             <textarea
               {...register("comment")}

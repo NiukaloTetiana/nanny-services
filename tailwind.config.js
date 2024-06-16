@@ -18,6 +18,7 @@ export default {
         "custom-shadow": "0px 0px 0px 2px #eca29b",
         "success-shadow": "0px 0px 0px 2px #86efac",
         "list-shadow": "0 20px 69px 0 #00000011",
+        "datepicker-shadow": "0 20px 69px 0 rgba(0, 0, 0, 0.07);",
       },
 
       fontFamily: {

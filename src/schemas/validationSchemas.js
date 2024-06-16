@@ -57,7 +57,7 @@ export const appointmentSchema = yup.object().shape({
   time: yup
     .date()
     .required("Meeting time is required")
-    .min(4, "Enter a valid meeting time"),
+    .min(5, "Enter a valid meeting time"),
   email: yup
     .string()
     .required("Email is required")
