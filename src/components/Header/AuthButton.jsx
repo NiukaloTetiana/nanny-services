@@ -40,7 +40,7 @@ export const AuthButton = ({ className, classLogIn, classRegistration }) => {
         </li>
       </ul>
       {isOpenModal && (
-        <Modal toggleModal={toggleModal}>
+        <Modal toggleModal={toggleModal} className="p-[37px] lg:p-[64px]">
           <AuthForm registration={registration} onClick={handleClick} />
         </Modal>
       )}

@@ -110,6 +110,8 @@ after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[100
 }
 
 .scrollbar {
+  overflow-y: auto;
+  overflow-x: hidden;
   --sb-track-color: #f877757b;
   --sb-thumb-color: #f03f3b;
   --sb-size: 6px;
@@ -140,6 +142,7 @@ after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[100
 
 .custom-time-select .react-datepicker__time-list-item {
   color: #11101c4d;
+  letter-spacing: 0.3em;
   padding-bottom: 4px;
   cursor: pointer;
   text-align: center;
@@ -152,6 +155,10 @@ after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[100
   color: #11101c;
 }
 
+.custom-time-select .react-datepicker__time-list-item--selected {
+  color: #11101c;
+}
+
 .custom-time-select .react-datepicker__header {
   padding-bottom: 16px;
 }
@@ -159,4 +166,8 @@ after:content-[''''] after:absolute after:bottom-0 after:left-[50%] after:w-[100
 .react-datepicker__triangle,
 .react-datepicker__aria-live {
   display: none;
+}
+
+.react-datepicker-popper {
+  z-index: 1;
 }

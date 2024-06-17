@@ -6,7 +6,7 @@ import { Icon } from "../../components";
 
 const modalRoot = document.querySelector("#modal-root");
 
-export const Modal = ({ children, toggleModal }) => {
+export const Modal = ({ children, toggleModal, className }) => {
   const backdropRef = useRef(null);
 
   useBackdropEffect(toggleModal, backdropRef);
@@ -17,7 +17,7 @@ export const Modal = ({ children, toggleModal }) => {
       className="flex items-center justify-center fixed bg-[#0b0b0b99] backdrop-blur-sm w-full h-full left-0 top-0 z-50"
     >
       <div
-        className={`relative bg-lightColor p-[34px] lg:p-[64px] rounded-[30px] sm-max:max-w-[300px] max-w-[335px] md:max-w-[696px] lg:max-w-[1184px] max-h-[95%] overflow-hidden`}
+        className={`relative bg-lightColor rounded-[30px] sm-max:max-w-[300px] max-w-[335px] md:max-w-[696px] lg:max-w-[1184px] max-h-[95%] ${className}`}
       >
         <button
           type="button"
@@ -26,7 +26,7 @@ export const Modal = ({ children, toggleModal }) => {
         >
           <Icon
             id="close"
-            className="stroke-darkColor md:size-[18px] lg:size-[20px]"
+            className="stroke-darkColor md:size-[18px] lg:size-[20px] hover:stroke-accentColor focus:stroke-accentColor active:stroke-accentColor transition duration-300"
             size="16"
           />
         </button>

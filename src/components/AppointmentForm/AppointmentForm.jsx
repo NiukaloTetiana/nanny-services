@@ -59,7 +59,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
   };
 
   return (
-    <div className="overflow-y-auto max-h-[80vh] px-[4px] scrollbar">
+    <div className="max-h-[80vh] px-[4px]  lg:pr-[32px] scrollbar">
       <h2 className="w-full md:w-[350px] lg:w-[450px] font-medium text-[30px] leading-[1.2] tracking-[-0.02em] text-darkColor mb-[15px] md:mb-[20px] sm-max:text-[25px] lg:text-[40px]">
         Make an appointment with a babysitter
       </h2>
@@ -91,7 +91,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
         className="flex flex-col md:flex-row md:flex-wrap gap-x-[8px] w-full md:w-[472px]"
         onSubmit={handleSubmit((data) => console.log(data))}
       >
-        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px] z-[1]">
+        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px]">
           <input
             {...register("address")}
             name="address"
@@ -102,7 +102,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("address")}
         </div>
-        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px] z-[1]">
+        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px]">
           <input
             {...register("phone")}
             name="phone"
@@ -114,7 +114,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("phone")}
         </div>
-        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px] z-[1]">
+        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px]">
           <input
             {...register("age")}
             name="age"
@@ -126,10 +126,11 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           {renderMessage("age")}
         </div>
 
-        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px] z-[1]">
+        <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px]">
           <Controller
             control={control}
             name="time"
+            defaultValue={new Date()}
             render={({ field: { value, onChange } }) => (
               <DatePicker
                 selected={value}
@@ -143,7 +144,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
                 timeFormat="HH:mm"
                 dateFormat="HH:mm"
                 placeholderText="00:00"
-                className={`${inputClass("time")} `}
+                className={inputClass("time")}
                 calendarClassName="w-[151px] h-[180px] bg-white shadow-datepicker-shadow rounded-[12px] p-[16px] font-medium text-[16px] leading-[1.5] text-darkColor overflow-y-auto scrollbar custom-time-select"
               />
             )}
@@ -155,9 +156,10 @@ export const AppointmentForm = ({ avatar_url, name }) => {
               className="stroke-darkColor fill-none group-focus:fill-[#fbfbfb66] transition duration-300"
             />
           </div>
+          {renderMessage("time")}
         </div>
 
-        <div className="relative w-full mb-[8px] md:mb-[16px] z-[1]">
+        <div className="relative w-full mb-[8px] md:mb-[16px]">
           <input
             {...register("email")}
             name="email"
@@ -168,7 +170,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("email")}
         </div>
-        <div className="relative w-full mb-[8px] md:mb-[16px] z-[1]">
+        <div className="relative w-full mb-[8px] md:mb-[16px]">
           <input
             {...register("name")}
             name="name"
@@ -179,11 +181,11 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           />
           {renderMessage("name")}
         </div>
-        <div className="relative w-full mb-[20px] md:mb-[40px] z-[1]">
+        <div className="relative w-full mb-[20px] md:mb-[40px]">
           <div className="rounded-[12px]">
             <textarea
               {...register("comment")}
-              className={`overflow-y-auto align-top resize-none outline-none h-[116px] scrollbar ${inputClass(
+              className={`align-top resize-none outline-none h-[116px] scrollbar ${inputClass(
                 "comment"
               )}`}
               name="comment"
