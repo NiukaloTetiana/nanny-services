@@ -7,12 +7,14 @@ import {
   registrationSchema,
   logInSchema,
 } from "../../schemas/validationSchemas";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/config";
 
 export const AuthForm = ({ registration, onClick }) => {
   const [showPass, setShowPass] = useState(false);
   const {
     register,
-    // reset,
+    reset,
     handleSubmit,
     formState: { errors, dirtyFields },
   } = useForm({
@@ -22,6 +24,7 @@ export const AuthForm = ({ registration, onClick }) => {
 
   const handleSpanClick = (value) => {
     onClick(value);
+    reset();
   };
 
   const inputClass = (fieldName) => {
@@ -59,8 +62,9 @@ export const AuthForm = ({ registration, onClick }) => {
     );
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { name, email, password } = data;
+    await createUserWithEmailAndPassword(auth, email, password);
 
     const userData = {
       email,

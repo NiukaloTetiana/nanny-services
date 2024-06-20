@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
 
 import { appointmentSchema } from "../../schemas/validationSchemas";
 import { formatPhoneNumber } from "../../helpers";
@@ -21,6 +20,10 @@ export const AppointmentForm = ({ avatar_url, name }) => {
     mode: "onChange",
     resolver: yupResolver(appointmentSchema),
   });
+
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
 
   const inputClass = (fieldName) => {
     const baseClass =
@@ -89,7 +92,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
 
       <form
         className="flex flex-col md:flex-row md:flex-wrap gap-x-[8px] w-full md:w-[472px]"
-        onSubmit={handleSubmit((data) => console.log(data))}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <div className="relative w-full md:w-[232px] mb-[8px] md:mb-[16px]">
           <input
