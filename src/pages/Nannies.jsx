@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getNannies } from "../services/nannies";
+import { getNannies } from "../services/api";
 import { Filter, LoadMoreButton, Loader, NanniesList } from "../components";
 import { toast } from "react-toastify";
 

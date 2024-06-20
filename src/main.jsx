@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <App />
     <ToastContainer
-      theme="dark"
+      theme="colored"
       style={{ zIndex: 99999 }}
       autoClose={2000}
       transition={Slide}

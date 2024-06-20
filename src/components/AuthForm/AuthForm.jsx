@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 
-import { Icon } from "../../components";
 import {
   registrationSchema,
   logInSchema,
 } from "../../schemas/validationSchemas";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/config";
+import { logInUser, registrationUser } from "../../services";
+import { Icon } from "../../components";
 
 export const AuthForm = ({ registration, onClick }) => {
   const [showPass, setShowPass] = useState(false);
@@ -64,15 +64,19 @@ export const AuthForm = ({ registration, onClick }) => {
 
   const onSubmit = async (data) => {
     const { name, email, password } = data;
-    await createUserWithEmailAndPassword(auth, email, password);
 
-    const userData = {
-      email,
-      password,
-    };
+    try {
+      if (registration) {
+        await registrationUser(name, email, password);
 
-    if (registration) {
-      userData.name = name;
+        toast.success(`Yohoo! ${name}, you are successfully registered!`);
+      } else {
+        await logInUser(email, password);
+
+        toast.success(`Welcome back!`);
+      }
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
