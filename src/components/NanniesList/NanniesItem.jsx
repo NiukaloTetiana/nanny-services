@@ -1,8 +1,9 @@
-import { useLocalStorage } from "../../hooks";
+import { useState } from "react";
+import { useCurrentUser, useLocalStorage } from "../../hooks";
 import { calculateAge } from "../../helpers";
 
 import { Icon, NanniesReviews } from "../../components";
-import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const NanniesItem = ({
   reviews,
@@ -18,8 +19,10 @@ export const NanniesItem = ({
   birthday,
   characters,
 }) => {
+  const { user } = useCurrentUser();
   const [isLike, setIsLike] = useLocalStorage(`like-${name}`, false);
   const [isShowReviews, setIsShowReviews] = useState(false);
+
   const age = calculateAge(birthday);
 
   const capitalize = (word) => {
@@ -30,7 +33,11 @@ export const NanniesItem = ({
   const capitalizedCharacters = characters.map(capitalize).join(", ");
 
   const toggleLike = () => {
-    setIsLike(!isLike);
+    if (user) {
+      setIsLike(!isLike);
+    } else {
+      toast.warning("Hello");
+    }
   };
 
   return (

@@ -3,11 +3,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 
+import { logInUser, registrationUser } from "../../services";
 import {
   registrationSchema,
   logInSchema,
 } from "../../schemas/validationSchemas";
-import { logInUser, registrationUser } from "../../services";
+
 import { Icon } from "../../components";
 
 export const AuthForm = ({ registration, onClick }) => {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
+import { useCurrentUser } from "../../hooks";
 import {
   AuthButton,
   BurgerMenu,
@@ -10,10 +11,10 @@ import {
 } from "../../components";
 
 export const Header = () => {
+  const { user } = useCurrentUser();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
-  const isLogIn = false;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -33,13 +34,13 @@ export const Header = () => {
         }`}
       >
         <NavBar
-          isLogIn={isLogIn}
           className="flex items-center justify-between text-center w-full"
           classLogo="flex items-center gap-[4px] font-medium text-[20px] md:text-[24px] leading-[1.2] tracking-[-0.02em] text-lightColor inline-block lg:py-0"
           classList="hidden lg:flex gap-[40px] font-normal text-[16px] leading-[1.25] tracking-[-0.01em] text-lightColor mr-[92px]"
           classItem="pt-[28px] pb-[40px] inline-block"
         />
-        {isMenuOpen && <BurgerMenu isLogIn={isLogIn} toggleMenu={toggleMenu} />}
+
+        {isMenuOpen && <BurgerMenu toggleMenu={toggleMenu} />}
         <button
           type="button"
           onClick={() => {
@@ -53,7 +54,7 @@ export const Header = () => {
             size="32"
           />
         </button>
-        {!isLogIn ? (
+        {!user ? (
           <AuthButton
             className="hidden lg:flex gap-[8px] items-center"
             classLogIn="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[38px] py-[14px] w-[124px] font-medium text-[16px] text-lightColor leading-[125%] tracking-[-0.01em] primary-btn-hover"
@@ -61,7 +62,7 @@ export const Header = () => {
           ${!isHomePage ? "border border-[#fbfbfb66]" : "border-none"}`}
           />
         ) : (
-          <UserBar />
+          <UserBar className="hidden lg:flex" />
         )}
       </div>
     </header>

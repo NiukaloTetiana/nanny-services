@@ -1,15 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
 
+import { useCurrentUser } from "../../hooks";
 import logo from "../../assets/images/logo.png";
 
 export const NavBar = ({
-  isLogIn,
   toggleMenu,
   className = "",
   classLogo,
   classList,
   classItem = "",
 }) => {
+  const { user } = useCurrentUser();
+
   return (
     <nav className={className}>
       <Link to="/" className={classLogo}>
@@ -28,7 +30,7 @@ export const NavBar = ({
             Nannies
           </NavLink>
         </li>
-        {isLogIn ? (
+        {user ? (
           <li onClick={toggleMenu}>
             <NavLink to="/favorites" className={classItem}>
               Favorites
