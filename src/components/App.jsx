@@ -1,19 +1,32 @@
 import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { Layout } from "../components";
+import { PrivateRoute } from "../routes";
+import { Layout, Loader } from "../components";
+import { useCurrentUser } from "../hooks";
 
 const Home = lazy(() => import("../pages/Home"));
 const Nannies = lazy(() => import("../pages/Nannies"));
 const Favorites = lazy(() => import("../pages/Favorites"));
 
 function App() {
-  return (
+  const { user, isRefreshing } = useCurrentUser();
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="/nannies" element={<Nannies />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="nannies" element={<Nannies />} />
+        <Route
+          path="favorites"
+          element={
+            <PrivateRoute user={user}>
+              <Favorites />
+            </PrivateRoute>
+          }
+        />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>

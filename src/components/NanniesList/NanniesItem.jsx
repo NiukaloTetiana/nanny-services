@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { useCurrentUser, useLocalStorage } from "../../hooks";
+
 import { calculateAge } from "../../helpers";
+import { useCurrentUser } from "../../hooks";
 
 import { Icon, NanniesReviews } from "../../components";
-import { toast } from "react-toastify";
 
 export const NanniesItem = ({
+  id,
+  index,
+  favoritesList,
+  toggleLike,
   reviews,
   avatar_url,
   name,
@@ -20,9 +24,7 @@ export const NanniesItem = ({
   characters,
 }) => {
   const { user } = useCurrentUser();
-  const [isLike, setIsLike] = useLocalStorage(`like-${name}`, false);
   const [isShowReviews, setIsShowReviews] = useState(false);
-
   const age = calculateAge(birthday);
 
   const capitalize = (word) => {
@@ -31,14 +33,6 @@ export const NanniesItem = ({
   };
 
   const capitalizedCharacters = characters.map(capitalize).join(", ");
-
-  const toggleLike = () => {
-    if (user) {
-      setIsLike(!isLike);
-    } else {
-      toast.warning("Hello");
-    }
-  };
 
   return (
     <li className="relative flex flex-col justify-center items-center md:items-start md:flex-row gap-[50px] md:gap-[24px] w-full bg-lightColor rounded-[24px] p-[24px] height-[318px] shadow-md transition-transform transform hover:scale-105 focus:scale-105">
@@ -138,12 +132,15 @@ export const NanniesItem = ({
           />
         )}
       </div>
-      <button className="absolute top-[24px] right-[24px]" onClick={toggleLike}>
+      <button
+        className="absolute top-[24px] right-[24px]"
+        onClick={() => toggleLike(id || index)}
+      >
         <Icon
           id="like"
           size="26"
           className={` lg:hover:stroke-accentColor focus:stroke-accentColor active:stroke-accentColor transition duration-500 ${
-            isLike
+            favoritesList.includes(id || index) && user
               ? "fill-accentColor stroke-accentColor"
               : "fill-none stroke-darkColor"
           }`}

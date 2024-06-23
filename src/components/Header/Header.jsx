@@ -29,14 +29,16 @@ export const Header = () => {
       }`}
     >
       <div
-        className={`container flex items-center ${
+        className={`container flex justify-between items-center ${
           isHomePage ? "py-[15px] lg:py-0 home-line" : "py-[15px] lg:py-0"
         }`}
       >
         <NavBar
-          className="flex items-center justify-between text-center w-full"
+          className={`flex  ${
+            !user ? "gap-[487px]" : "gap-[305px]"
+          } items-center text-center`}
           classLogo="flex items-center gap-[4px] font-medium text-[20px] md:text-[24px] leading-[1.2] tracking-[-0.02em] text-lightColor inline-block lg:py-0"
-          classList="hidden lg:flex gap-[40px] font-normal text-[16px] leading-[1.25] tracking-[-0.01em] text-lightColor mr-[92px]"
+          classList="hidden lg:flex gap-[40px] font-normal text-[16px] leading-[1.25] tracking-[-0.01em] text-lightColor"
           classItem="pt-[28px] pb-[40px] inline-block"
         />
 

@@ -19,6 +19,24 @@ export const getNannies = async () => {
   }
 };
 
+export const getFavoritesNannies = async (nanniesId) => {
+  try {
+    const promises = nanniesId.map(async (id) => {
+      const snapshot = await get(ref(database, `/nannies/${id}`));
+
+      if (snapshot.exists()) {
+        return { id, ...snapshot.val() };
+      } else {
+        return null;
+      }
+    });
+    const nannies = await Promise.all(promises);
+    return nannies.filter((nanny) => nanny !== null);
+  } catch (error) {
+    throw new Error(`Error fetching favorites nannies.`);
+  }
+};
+
 export const logInUser = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
