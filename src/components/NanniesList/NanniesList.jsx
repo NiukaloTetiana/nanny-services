@@ -1,7 +1,8 @@
 import { NanniesItem } from "./NanniesItem";
+
 import { useLocalStorage } from "../../hooks";
 
-export const NanniesList = ({ nannies }) => {
+export const NanniesList = ({ nannies, handleClickLike }) => {
   const { favoritesList, toggleLike } = useLocalStorage();
 
   return (
@@ -10,7 +11,7 @@ export const NanniesList = ({ nannies }) => {
         <NanniesItem
           key={index}
           {...item}
-          {...{ favoritesList, toggleLike, index }}
+          {...{ favoritesList, toggleLike, index, handleClickLike }}
         />
       ))}
     </ul>

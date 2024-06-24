@@ -1,15 +1,16 @@
 import { useState } from "react";
 
+import { Icon, NanniesReviews } from "../../components";
+
 import { calculateAge } from "../../helpers";
 import { useCurrentUser } from "../../hooks";
-
-import { Icon, NanniesReviews } from "../../components";
 
 export const NanniesItem = ({
   id,
   index,
   favoritesList,
   toggleLike,
+  handleClickLike,
   reviews,
   avatar_url,
   name,
@@ -36,7 +37,7 @@ export const NanniesItem = ({
 
   return (
     <li className="relative flex flex-col justify-center items-center md:items-start md:flex-row gap-[50px] md:gap-[24px] w-full bg-lightColor rounded-[24px] p-[24px] height-[318px] shadow-md transition-transform transform hover:scale-105 focus:scale-105">
-      <div className="relative flex shrink-0 h-[96px] w-[96px] md:h-[120px] md:w-[120px] p-[12px] border-2 border-[#f03f3b33] rounded-[30px]">
+      <div className="relative flex shrink-0 h-[96px] w-[96px] md:h-[120px] md:w-[120px] p-[12px] border-2 border-secondBorderColor rounded-[30px]">
         <img
           src={avatar_url}
           alt={name}
@@ -50,7 +51,7 @@ export const NanniesItem = ({
 
       <div>
         <div className="flex justify-end md:justify-between md:mb-[12px] lg:mb-[8px] md:mr-[45px] lg:mr-[98px]">
-          <p className="absolute top-[110px] left-[24px] md:static font-medium leading-[1.5] text-[#8a8a89] text-[14px] md:text-[14px] lg:text-[16px]">
+          <p className="absolute top-[110px] left-[24px] md:static font-medium leading-[1.5] text-secondTextColor text-[14px] md:text-[14px] lg:text-[16px]">
             Nanny
           </p>
           <ul className="flex flex-col md:flex-row md:items-center gap-[2px] md:gap-[15px] lg:gap-[32px] mb-[15px] md:mb-0 font-medium text-[14px] md:text-[14px] lg:text-[16px] leading-[1.5] text-darkColor">
@@ -81,7 +82,7 @@ export const NanniesItem = ({
           {name}
         </h3>
 
-        <ul className="flex flex-col md:flex-row md:flex-wrap gap-[8px] font-medium text-[14px] md:text-[16px] leading-[1.5] text-[#8a8a89] mb-[24px]">
+        <ul className="flex flex-col md:flex-row md:flex-wrap gap-[8px] font-medium text-[14px] md:text-[16px] leading-[1.5] text-secondTextColor mb-[24px]">
           {[
             { title: "Age:", value: age },
             { title: "Experience:", value: experience },
@@ -91,12 +92,12 @@ export const NanniesItem = ({
           ].map(({ title, value }, index) => (
             <li
               key={index}
-              className="inline-block bg-[#f3f3f3] rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[10px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md"
+              className="inline-block bg-bgLigtColor rounded-[20px] md:rounded-[24px] px-[16px] py-[8px] md:px-[10px] md:py-[5px] lg:px-[16px] lg:py-[8px] shadow-md"
             >
               <p>
                 {title}{" "}
                 <span
-                  className={`text-[#11101c] ${
+                  className={`text-darkColor ${
                     title === "Age:" ? "underline" : ""
                   }`}
                 >
@@ -108,7 +109,7 @@ export const NanniesItem = ({
         </ul>
 
         <p
-          className={`font-normal text-[16px] leading-[1.25] text-[#11101c7f] ${
+          className={`font-normal text-[16px] leading-[1.25] text-textColor ${
             !isShowReviews ? "mb-[14px]" : "mb-[30px] lg:mb-[48px]"
           }`}
         >
@@ -134,7 +135,10 @@ export const NanniesItem = ({
       </div>
       <button
         className="absolute top-[24px] right-[24px]"
-        onClick={() => toggleLike(id || index)}
+        onClick={() => {
+          toggleLike(id || index);
+          handleClickLike && handleClickLike(id);
+        }}
       >
         <Icon
           id="like"

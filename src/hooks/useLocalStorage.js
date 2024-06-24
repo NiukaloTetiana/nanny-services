@@ -23,6 +23,7 @@ export const useLocalStorage = () => {
           : [...prevFavorites, id];
 
         localStorage.setItem(user.email, JSON.stringify(updatedFavorites));
+
         return updatedFavorites;
       });
     } else {

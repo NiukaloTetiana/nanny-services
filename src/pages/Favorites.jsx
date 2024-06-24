@@ -1,35 +1,45 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { Filter, NanniesList } from "../components";
+import { Filter, Loader, NanniesList } from "../components";
+
 import { getFavoritesNannies } from "../services";
 import { useLocalStorage } from "../hooks";
 
 const Favorites = () => {
   const [nannies, setNannies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { favoritesList } = useLocalStorage();
 
   useEffect(() => {
+    setIsLoading(true);
     if (favoritesList.length) {
       getFavoritesNannies(favoritesList)
         .then((data) => {
           setNannies(data);
         })
-        .catch((error) => toast.error(error.message));
+        .catch((error) => toast.error(error.message))
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
+    setIsLoading(false);
+    // else {
+    //   setIsLoading(false);
+    // }
   }, [favoritesList]);
 
-  const handleClickLike = ({ id }) => {
-    console.log(id);
+  const handleClickLike = (id) => {
     const filteredNannies = nannies.filter((nanny) => nanny.id !== id);
     setNannies(filteredNannies);
-    console.log(nannies);
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className="bg-bgLigtColor min-h-screen">
       <div className="container pt-[45px] pb-[40px] md:pt-[64px] md:pb-[100px]">
-        {favoritesList.length ? (
+        {favoritesList.length || nannies.length ? (
           <>
             <Filter />
             <NanniesList nannies={nannies} handleClickLike={handleClickLike} />

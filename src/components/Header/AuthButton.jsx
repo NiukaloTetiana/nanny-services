@@ -4,7 +4,12 @@ import { AuthForm, Modal } from "../../components";
 
 import { useModal } from "../../hooks";
 
-export const AuthButton = ({ className, classLogIn, classRegistration }) => {
+export const AuthButton = ({
+  className,
+  classLogIn,
+  classRegistration,
+  handleRegistrationSuccess,
+}) => {
   const [isOpenModal, toggleModal] = useModal();
   const [registration, setRegistration] = useState(false);
 
@@ -42,7 +47,11 @@ export const AuthButton = ({ className, classLogIn, classRegistration }) => {
       </ul>
       {isOpenModal && (
         <Modal toggleModal={toggleModal} className="p-[37px] lg:p-[64px]">
-          <AuthForm registration={registration} onClick={handleClick} />
+          <AuthForm
+            handleRegistrationSuccess={handleRegistrationSuccess}
+            registration={registration}
+            onClick={handleClick}
+          />
         </Modal>
       )}
     </>

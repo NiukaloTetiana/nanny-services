@@ -11,8 +11,11 @@ import {
   logInSchema,
 } from "../../schemas/validationSchemas";
 
-
-export const AuthForm = ({ registration, onClick }) => {
+export const AuthForm = ({
+  registration,
+  onClick,
+  handleRegistrationSuccess,
+}) => {
   const [showPass, setShowPass] = useState(false);
   const {
     register,
@@ -70,7 +73,7 @@ export const AuthForm = ({ registration, onClick }) => {
     try {
       if (registration) {
         await registrationUser(name, email, password);
-
+        handleRegistrationSuccess(name);
         toast.success(`Yohoo! ${name}, you are successfully registered!`);
       } else {
         await logInUser(email, password);

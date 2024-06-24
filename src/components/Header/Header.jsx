@@ -14,11 +14,16 @@ import { useCurrentUser } from "../../hooks";
 export const Header = () => {
   const { user } = useCurrentUser();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [userName, setUserName] = useState(null);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleRegistrationSuccess = (name) => {
+    setUserName(name);
   };
 
   return (
@@ -59,13 +64,14 @@ export const Header = () => {
         </button>
         {!user ? (
           <AuthButton
+            handleRegistrationSuccess={handleRegistrationSuccess}
             className="hidden lg:flex gap-[8px] items-center"
             classLogIn="border border-opacityDarkColor bg-transparent rounded-[30px] px-[38px] py-[14px] w-[124px] font-medium text-[16px] text-lightColor leading-[1.25] tracking-[-0.01em] primary-btn-hover"
             classRegistration={`bg-accentColor rounded-[30px] px-[40px] py-[14px] w-[168px] font-medium text-[16px] leading-[1.25] tracking-[-0.01em] text-lightColor hover:text-accentColor hover:bg-lightColor focus:text-accentColor focus:bg-lightColor transition duration-500 
           ${!isHomePage ? "border border-opacityDarkColor" : "border-none"}`}
           />
         ) : (
-          <UserBar className="hidden lg:flex" />
+          <UserBar userName={userName} className="hidden lg:flex" />
         )}
       </div>
     </header>

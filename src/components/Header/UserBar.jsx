@@ -2,7 +2,7 @@ import { useCurrentUser, useModal } from "../../hooks";
 
 import { Icon, LogOut, Modal } from "../../components";
 
-export const UserBar = ({ className }) => {
+export const UserBar = ({ className, userName }) => {
   const { user } = useCurrentUser();
   const [isOpenModal, toggleModal] = useModal();
 
@@ -15,7 +15,7 @@ export const UserBar = ({ className }) => {
           <Icon id="user" className="fill-accentColor" size="24" />
         </div>
         <p className="font-medium text-[18px] text-lightColor leading-[1.1] tracking-[-0.01em]">
-          {user?.displayName}
+          {userName || user?.displayName}
         </p>
       </div>
 
