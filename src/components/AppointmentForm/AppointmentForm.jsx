@@ -3,9 +3,10 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import DatePicker from "react-datepicker";
 
-import { appointmentSchema } from "../../schemas/validationSchemas";
-import { formatPhoneNumber } from "../../helpers";
 import { Icon } from "../../components";
+import { appointmentSchema } from "../../schemas/validationSchemas";
+
+import { formatPhoneNumber } from "../../helpers";
 
 export const AppointmentForm = ({ avatar_url, name }) => {
   const [phone, setPhone] = useState("+380 ");
@@ -66,7 +67,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
       <h2 className="w-full md:w-[350px] lg:w-[450px] font-medium text-[30px] leading-[1.2] tracking-[-0.02em] text-darkColor mb-[15px] md:mb-[20px] sm-max:text-[25px] lg:text-[40px]">
         Make an appointment with a babysitter
       </h2>
-      <p className="w-full md:w-[470px] font-normal text-[14px] sm-max:text-[12px] md:text-[16px] sm-max:mb-[15px] leading-[1.25] text-[#11101c7f] mb-[20px] md:mb-[30px] lg:mb-[40px]">
+      <p className="w-full md:w-[470px] font-normal text-[14px] sm-max:text-[12px] md:text-[16px] sm-max:mb-[15px] leading-[1.25] text-textColor mb-[20px] md:mb-[30px] lg:mb-[40px]">
         Arranging a meeting with a caregiver for your child is the first step to
         creating a safe and comfortable environment. Fill out the form below so
         we can match you with the perfect care partner.
@@ -81,7 +82,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
           height="38"
         />
         <div>
-          <p className="font-medium text-[12px] leading-[1.3] text-[#8a8a89] md:mb-[4px]">
+          <p className="font-medium text-[12px] leading-[1.3] text-secondTextColor md:mb-[4px]">
             Your nanny
           </p>
           <p className="font-medium text-[14px] md:text-[16px] leading-[1.5] text-darkColor">
@@ -156,7 +157,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
             <Icon
               id="clock"
               size="20"
-              className="stroke-darkColor fill-none group-focus:fill-[#fbfbfb66] transition duration-300"
+              className="stroke-darkColor fill-none group-focus:fill-opacityDarkColor transition duration-300"
             />
           </div>
           {renderMessage("time")}
@@ -202,7 +203,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
 
         <button
           type="submit"
-          className="border-none rounded-[30px] px-[18px] py-[14px] lg:py-[16px] w-full bg-accentColor font-medium text-[14px] lg:text-[16px] leading-[1.25] tracking-[-0.01em] text-lightColor hover:bg-[#f87775] focus:bg-[#f87775] hover:text-darkColor focus:text-darkColor transition duration-300"
+          className="border-none rounded-[30px] px-[18px] py-[14px] lg:py-[16px] w-full bg-accentColor font-medium text-[14px] lg:text-[16px] leading-[1.25] tracking-[-0.01em] text-lightColor hover:bg-hoverColor focus:bg-hoverColor hover:text-darkColor focus:text-darkColor transition duration-300"
         >
           Send
         </button>

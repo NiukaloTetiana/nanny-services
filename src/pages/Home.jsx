@@ -19,7 +19,7 @@ const Home = () => {
           </p>
           <NavLink
             to="/nannies"
-            className="flex gap-[18px] justify-center items-center border border-[#fbfbfb66] bg-transparent rounded-[30px] py-[18px] w-[230px] font-medium text-[20px] text-lightColor
+            className="flex gap-[18px] justify-center items-center border border-opacityDarkColor bg-transparent rounded-[30px] py-[18px] w-[230px] font-medium text-[20px] text-lightColor
       leading-[1.2] tracking-[-0.01em] primary-btn-hover group"
           >
             Get started

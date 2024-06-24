@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+
 import { Icon } from "../../components";
 
 export const Filter = () => {
@@ -30,7 +31,7 @@ export const Filter = () => {
 
   return (
     <div className="mb-[32px] relative">
-      <p className="font-medium text-[14px] leading-[1.3] text-[#8a8a89] mb-[8px]">
+      <p className="font-medium text-[14px] leading-[1.3] text-secondTextColor mb-[8px]">
         Filters
       </p>
 
@@ -50,7 +51,7 @@ export const Filter = () => {
       </div>
 
       {isListVisible && (
-        <ul className="absolute top-[88px] left-0 bg-whiteColor rounded-[14px] px-[18px] py-[16px] w-[180px] md:w-[226px] font-normal text-[16px] md:text-[18px] leading-[1.1] text-[#11101c4c] custom-list-spacing z-[2] shadow-list-shadow">
+        <ul className="absolute top-[88px] left-0 bg-whiteColor rounded-[14px] px-[18px] py-[16px] w-[180px] md:w-[226px] font-normal text-[16px] md:text-[18px] leading-[1.1] text-textFilterColor custom-list-spacing z-[2] shadow-list-shadow">
           {[
             "A to Z",
             "Z to A",

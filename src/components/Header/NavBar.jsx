@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 
 import { useCurrentUser } from "../../hooks";
+
 import logo from "../../assets/images/logo.png";
 
 export const NavBar = ({

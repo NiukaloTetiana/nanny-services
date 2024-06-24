@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-import { useModal } from "../../hooks";
 import { AuthForm, Modal } from "../../components";
+
+import { useModal } from "../../hooks";
 
 export const AuthButton = ({ className, classLogIn, classRegistration }) => {
   const [isOpenModal, toggleModal] = useModal();

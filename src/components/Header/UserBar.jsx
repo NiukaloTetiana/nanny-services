@@ -1,4 +1,5 @@
 import { useCurrentUser, useModal } from "../../hooks";
+
 import { Icon, LogOut, Modal } from "../../components";
 
 export const UserBar = ({ className }) => {
@@ -26,7 +27,7 @@ export const UserBar = ({ className }) => {
       <button
         onClick={toggleModal}
         type="button"
-        className="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[36px] py-[14px] w-[134px] font-medium text-[16px] text-lightColor leading-[125%] tracking-[-0.01em] primary-btn-hover"
+        className="border border-opacityDarkColor bg-transparent rounded-[30px] px-[36px] py-[14px] w-[134px] font-medium text-[16px] text-lightColor leading-[1.25] tracking-[-0.01em] primary-btn-hover"
       >
         Log out
       </button>

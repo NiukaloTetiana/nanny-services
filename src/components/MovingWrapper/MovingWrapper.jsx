@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 
-import { Icon } from "..";
 import { getRandomNumber } from "../../helpers";
+
+import { Icon } from "..";
 
 export const MovingWrapper = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -63,10 +64,10 @@ export const MovingWrapper = () => {
         />
       </div>
       <div>
-        <p className="font-normal text-[10px] md:text-[16px] leading-[125%] text-[#11101c7f] mb-[4px]">
+        <p className="font-normal text-[10px] md:text-[16px] leading-[125%] text-textColor mb-[4px]">
           Experienced nannies
         </p>
-        <p className="font-bold text-[18px] md:text-[24px] leading-[125%] text-darkColor">
+        <p className="font-bold text-[18px] md:text-[24px] leading-[1.25] text-darkColor">
           {randomSum}
         </p>
       </div>

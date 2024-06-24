@@ -26,14 +26,11 @@ export const useLocalStorage = () => {
         return updatedFavorites;
       });
     } else {
-      toast.info("Please sign in to add/remove favorites!");
+      toast.info(
+        "No-no! You can`t add/remove a nanny to your favorites. Please sign in."
+      );
     }
   };
-
-  //   toast.warning(
-  //     "No-no. You can`t add a nanny to your favorites until you log in."
-  //   );
-  // }
 
   return { favoritesList, toggleLike };
 };

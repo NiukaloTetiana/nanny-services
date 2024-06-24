@@ -17,8 +17,8 @@ const Nannies = () => {
 
   if (!nannies.length) return <Loader />;
   return (
-    <div className="bg-[#F3F3F3]">
-      <div className="container bg-[#F3F3F3] pt-[64px] pb-[100px]">
+    <div className="bg-bgLigtColor">
+      <div className="container bg-bgLigtColor pt-[64px] pb-[100px]">
         <Filter />
 
         <NanniesList nannies={nannies} />

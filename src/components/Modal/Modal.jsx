@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import ReactDOM from "react-dom";
 
-import { useBackdropEffect } from "../../hooks";
 import { Icon } from "../../components";
+
+import { useBackdropEffect } from "../../hooks";
 
 const modalRoot = document.querySelector("#modal-root");
 
