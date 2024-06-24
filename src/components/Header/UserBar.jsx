@@ -1,13 +1,10 @@
-import { useCurrentUser } from "../../hooks";
-import { logOutUser } from "../../services";
-import { Icon } from "../../components";
+import { useCurrentUser, useModal } from "../../hooks";
+import { Icon, LogOut, Modal } from "../../components";
 
 export const UserBar = ({ className }) => {
   const { user } = useCurrentUser();
+  const [isOpenModal, toggleModal] = useModal();
 
-  const handleLogOutClick = () => {
-    logOutUser();
-  };
   return (
     <div
       className={`${className} flex-wrap lg:flex-nowrap justify-center items-center gap-[24px]`}
@@ -20,8 +17,14 @@ export const UserBar = ({ className }) => {
           {user?.displayName}
         </p>
       </div>
+
+      {isOpenModal && (
+        <Modal toggleModal={toggleModal} className="p-[44px] md:p-[64px]">
+          <LogOut toggleLogOutModal={toggleModal} />
+        </Modal>
+      )}
       <button
-        onClick={handleLogOutClick}
+        onClick={toggleModal}
         type="button"
         className="border border-[#fbfbfb66] bg-transparent rounded-[30px] px-[36px] py-[14px] w-[134px] font-medium text-[16px] text-lightColor leading-[125%] tracking-[-0.01em] primary-btn-hover"
       >
