@@ -48,7 +48,11 @@ export const Header = () => {
           classItem="pt-[28px] pb-[40px] inline-block"
         />
 
-        {isMenuOpen && <BurgerMenu toggleMenu={toggleMenu} />}
+        <BurgerMenu
+          toggleMenu={toggleMenu}
+          classBackdrop={`${isMenuOpen ? "scale-1" : "scale-0"}`}
+          classMenu={`${isMenuOpen ? "translate-y-0" : "translate-y-[-100%]"}`}
+        />
         <button
           type="button"
           onClick={() => {
@@ -71,7 +75,11 @@ export const Header = () => {
           ${!isHomePage ? "border border-opacityDarkColor" : "border-none"}`}
           />
         ) : (
-          <UserBar userName={userName} className="hidden lg:flex" />
+          <UserBar
+            userName={userName}
+            toggleMenu={toggleMenu}
+            className="hidden lg:flex"
+          />
         )}
       </div>
     </header>

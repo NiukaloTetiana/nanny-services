@@ -9,6 +9,7 @@ export const AuthButton = ({
   classLogIn,
   classRegistration,
   handleRegistrationSuccess,
+  toggleMenu,
 }) => {
   const [isOpenModal, toggleModal] = useModal();
   const [registration, setRegistration] = useState(false);
@@ -22,8 +23,9 @@ export const AuthButton = ({
       <ul className={className}>
         <li>
           <button
-            type="submit"
+            type="button"
             onClick={() => {
+              toggleMenu && toggleMenu();
               setRegistration(false);
               toggleModal();
             }}
@@ -34,8 +36,9 @@ export const AuthButton = ({
         </li>
         <li>
           <button
-            type="submit"
+            type="button"
             onClick={() => {
+              toggleMenu && toggleMenu();
               setRegistration(true);
               toggleModal();
             }}

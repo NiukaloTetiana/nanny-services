@@ -2,7 +2,7 @@ import { useCurrentUser, useModal } from "../../hooks";
 
 import { Icon, LogOut, Modal } from "../../components";
 
-export const UserBar = ({ className, userName }) => {
+export const UserBar = ({ className, userName, toggleMenu }) => {
   const { user } = useCurrentUser();
   const [isOpenModal, toggleModal] = useModal();
 
@@ -25,7 +25,10 @@ export const UserBar = ({ className, userName }) => {
         </Modal>
       )}
       <button
-        onClick={toggleModal}
+        onClick={() => {
+          toggleMenu && toggleMenu();
+          toggleModal();
+        }}
         type="button"
         className="border border-opacityDarkColor bg-transparent rounded-[30px] px-[36px] py-[14px] w-[134px] font-medium text-[16px] text-lightColor leading-[1.25] tracking-[-0.01em] primary-btn-hover"
       >

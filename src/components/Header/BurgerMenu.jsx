@@ -4,7 +4,7 @@ import { AuthButton, Icon, NavBar, UserBar } from "../../components";
 
 import { useBackdropEffect, useCurrentUser } from "../../hooks";
 
-export const BurgerMenu = ({ toggleMenu }) => {
+export const BurgerMenu = ({ toggleMenu, classBackdrop, classMenu }) => {
   const backdropRef = useRef(null);
   const { user } = useCurrentUser();
 
@@ -13,9 +13,11 @@ export const BurgerMenu = ({ toggleMenu }) => {
   return (
     <div
       ref={backdropRef}
-      className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 lg:hidden"
+      className={`${classBackdrop} fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 lg:hidden`}
     >
-      <div className="relative flex flex-col justify-start items-center gap-[45px] bg-accentColor px-[24px] py-[50px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-full">
+      <div
+        className={`${classMenu} relative flex flex-col justify-start items-center gap-[45px] bg-accentColor px-[24px] py-[50px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-full transition duration-500`}
+      >
         <button
           type="button"
           className="flex justify-center items-center absolute top-[24px] right-[24px] outline-none group"
@@ -41,7 +43,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
             classRegistration="border border-opacityDarkColor bg-transparent rounded-[30px] px-[38px] py-[14px] w-[185px] md:w-[235px] font-medium text-[16px] md:text-[20px] leading-[125%] tracking-[-0.01em] text-lightColor primary-btn-hover"
           />
         ) : (
-          <UserBar className="flex" />
+          <UserBar className="flex" toggleMenu={toggleMenu} />
         )}
       </div>
     </div>
