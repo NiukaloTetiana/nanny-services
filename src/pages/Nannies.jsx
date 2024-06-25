@@ -20,7 +20,7 @@ const Nannies = () => {
         setIsLoadMore(isMoreNannies);
 
         if (!isMoreNannies) {
-          toast.info("You have reached the end of the list nannies.");
+          toast.info("You have reached the end of the list of nannies.");
         }
 
         const nextNannies = await getNannies(lastIndex);
@@ -41,15 +41,16 @@ const Nannies = () => {
     setPage((prev) => prev + 1);
   };
 
+  if (isLoading && !nannies.length) return <Loader />;
+
   return (
-    <div className="bg-bgLigtColor">
+    <div className="bg-bgLigtColor min-h-screen">
       <div className="container bg-bgLigtColor pt-[64px] pb-[100px]">
         <Filter />
 
         <NanniesList nannies={nannies} />
-        <div className="w-full text-center">
-          {isLoadMore ? <LoadMoreButton onClick={onLoadMoreClick} /> : null}
-        </div>
+
+        {isLoadMore ? <LoadMoreButton onClick={onLoadMoreClick} /> : null}
       </div>
       {isLoading && <Loader />}
     </div>

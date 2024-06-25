@@ -49,9 +49,14 @@ export const getNannies = async (index) => {
   }
 };
 
-export const getFavoritesNannies = async (nanniesId) => {
+export const getFavoritesNannies = async (nanniesId, page) => {
+  const limit = 3;
   try {
-    const promises = nanniesId.map(async (id) => {
+    const start = (page - 1) * limit;
+    const end = start + limit;
+    const paginatedNanniesId = nanniesId.slice(start, end);
+
+    const promises = paginatedNanniesId.map(async (id) => {
       const snapshot = await get(ref(database, `/nannies/nanniesList/${id}`));
 
       if (snapshot.exists()) {
@@ -60,8 +65,10 @@ export const getFavoritesNannies = async (nanniesId) => {
         return null;
       }
     });
-    const nannies = await Promise.all(promises);
-    return nannies.filter((nanny) => nanny !== null);
+    const nannies = (await Promise.all(promises)).filter(
+      (nanny) => nanny !== null
+    );
+    return nannies;
   } catch (error) {
     throw new Error(`Error fetching favorites nannies.`);
   }

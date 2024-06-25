@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { Filter, Loader, NanniesList } from "../components";
+import { Filter, LoadMoreButton, Loader, NanniesList } from "../components";
 
 import { getFavoritesNannies } from "../services";
 import { useLocalStorage } from "../hooks";
@@ -9,14 +9,24 @@ import { useLocalStorage } from "../hooks";
 const Favorites = () => {
   const [nannies, setNannies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [isLoadMore, setisLoadMore] = useState(false);
   const { favoritesList } = useLocalStorage();
 
   useEffect(() => {
     setIsLoading(true);
     if (favoritesList.length) {
-      getFavoritesNannies(favoritesList)
+      const total = favoritesList.length;
+      const isMoreNannies = page * 3 < total;
+
+      setisLoadMore(isMoreNannies);
+
+      if (!isMoreNannies) {
+        toast.info("You have reached the end of the list of nannies.");
+      }
+      getFavoritesNannies(favoritesList, page)
         .then((data) => {
-          setNannies(data);
+          setNannies((prev) => [...prev, ...data]);
         })
         .catch((error) => toast.error(error.message))
         .finally(() => {
@@ -24,14 +34,15 @@ const Favorites = () => {
         });
     }
     setIsLoading(false);
-    // else {
-    //   setIsLoading(false);
-    // }
-  }, [favoritesList]);
+  }, [favoritesList, page]);
 
   const handleClickLike = (id) => {
     const filteredNannies = nannies.filter((nanny) => nanny.id !== id);
     setNannies(filteredNannies);
+  };
+
+  const onLoadMoreClick = () => {
+    setPage((prev) => prev + 1);
   };
 
   return isLoading ? (
@@ -43,6 +54,7 @@ const Favorites = () => {
           <>
             <Filter />
             <NanniesList nannies={nannies} handleClickLike={handleClickLike} />
+            {isLoadMore ? <LoadMoreButton onClick={onLoadMoreClick} /> : null}
           </>
         ) : (
           <div className="relative w-full h-[480px] sm-max:h-[400px] md:min-h-screen bg-bgLigtColor bg-[url('https://interhit.ru/wp-content/uploads/2020/06/114621_or.jpg')] bg-cover bg-center bg-no-repeat rounded-[30px] z-[0]">
