@@ -34,7 +34,8 @@
 - **Form Validation**: Implemented using React Hook Form and Yup for client-side validation.
 
 <div align="center" style="display: flex; gap: 10px; width: 100%;"> 
-![Feature Registration](./public/4.jpg) ![Feature login](./public/5.jpg)
+<img src="./public/4.jpg" alt="Feature Registration" width="45%" />
+<img src="./public/5.jpg" alt="Feature Login" width="45%" />
 </div>
 
 ## About the Project
