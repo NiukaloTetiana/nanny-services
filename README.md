@@ -33,7 +33,9 @@
 - **Modal Dialogs**: Used for login/registration/logout and appointment scheduling.
 - **Form Validation**: Implemented using React Hook Form and Yup for client-side validation.
 
+<div align="center" style="display: flex; gap: 10px; width: 100%;"> 
 ![Feature Registration](./public/4.jpg) ![Feature login](./public/5.jpg)
+</div>
 
 ## About the Project
 
