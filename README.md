@@ -8,7 +8,7 @@
 
 - Welcomes users with a site title, company slogan, and a call-to-action button redirecting to the "Nannies" page.
 
-![Home Page](./public/1.png)
+![Home Page](./public/2.jpg)
 
 **2. Nannies**
 
@@ -24,7 +24,7 @@
 - Private page accessible to authenticated users.
 - Allows users to view and manage their favorite nannies.
 
-![Favorites Page](./public/3.png)
+![Favorites Page](./public/3.jpg)
 
 ## Features
 
@@ -33,7 +33,7 @@
 - **Modal Dialogs**: Used for login/registration/logout and appointment scheduling.
 - **Form Validation**: Implemented using React Hook Form and Yup for client-side validation.
 
-![Feature Registration](./public/4.png) ![Feature login](./public/5.png)
+![Feature Registration](./public/4.jpg) ![Feature login](./public/5.jpg)
 
 ## About the Project
 
