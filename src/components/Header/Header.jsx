@@ -49,6 +49,7 @@ export const Header = () => {
         />
 
         <BurgerMenu
+          isOpen={isMenuOpen}
           toggleMenu={toggleMenu}
           classBackdrop={`${isMenuOpen ? "scale-1" : "scale-0"}`}
           classMenu={`${isMenuOpen ? "translate-y-0" : "translate-y-[-100%]"}`}

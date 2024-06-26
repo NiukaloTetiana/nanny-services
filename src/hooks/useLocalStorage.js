@@ -28,7 +28,7 @@ export const useLocalStorage = () => {
       });
     } else {
       toast.info(
-        "No-no! You can`t add/remove a nanny to your favorites. Please sign in."
+        "No-no! You can`t add a nanny to your favorites. Please sign in."
       );
     }
   };

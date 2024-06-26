@@ -49,7 +49,11 @@ export const AuthButton = ({
         </li>
       </ul>
       {isOpenModal && (
-        <Modal toggleModal={toggleModal} className="p-[37px] lg:p-[64px]">
+        <Modal
+          isOpen={isOpenModal}
+          toggleModal={toggleModal}
+          className="p-[37px] lg:p-[64px]"
+        >
           <AuthForm
             handleRegistrationSuccess={handleRegistrationSuccess}
             registration={registration}

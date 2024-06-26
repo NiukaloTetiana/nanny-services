@@ -20,7 +20,11 @@ export const UserBar = ({ className, userName, toggleMenu }) => {
       </div>
 
       {isOpenModal && (
-        <Modal toggleModal={toggleModal} className="p-[44px] md:p-[64px]">
+        <Modal
+          isOpen={isOpenModal}
+          toggleModal={toggleModal}
+          className="p-[44px] md:p-[64px]"
+        >
           <LogOut toggleLogOutModal={toggleModal} />
         </Modal>
       )}

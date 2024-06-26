@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 
-export const useBackdropEffect = (toggleMenu, backdropRef) => {
+export const useBackdropEffect = (isOpen, toggleMenu, backdropRef) => {
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleEscape = (event) => {
       if (event.code === "Escape") {
         toggleMenu();
@@ -31,5 +33,5 @@ export const useBackdropEffect = (toggleMenu, backdropRef) => {
         currentBackdrop.removeEventListener("click", handleBackdropClick);
       }
     };
-  }, [toggleMenu, backdropRef]);
+  }, [toggleMenu, backdropRef, isOpen]);
 };

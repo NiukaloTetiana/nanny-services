@@ -7,10 +7,10 @@ import { useBackdropEffect } from "../../hooks";
 
 const modalRoot = document.querySelector("#modal-root");
 
-export const Modal = ({ children, toggleModal, className }) => {
+export const Modal = ({ children, toggleModal, className, isOpen }) => {
   const backdropRef = useRef(null);
 
-  useBackdropEffect(toggleModal, backdropRef);
+  useBackdropEffect(isOpen, toggleModal, backdropRef);
 
   return ReactDOM.createPortal(
     <div

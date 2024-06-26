@@ -37,6 +37,7 @@ export const NanniesReviews = ({ reviews, name, avatar_url }) => {
 
       {isOpenModal && (
         <Modal
+          isOpen={isOpenModal}
           toggleModal={toggleModal}
           className="p-[37px] lg:p-[64px] lg:pr-[36px]"
         >

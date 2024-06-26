@@ -4,11 +4,16 @@ import { AuthButton, Icon, NavBar, UserBar } from "../../components";
 
 import { useBackdropEffect, useCurrentUser } from "../../hooks";
 
-export const BurgerMenu = ({ toggleMenu, classBackdrop, classMenu }) => {
+export const BurgerMenu = ({
+  toggleMenu,
+  classBackdrop,
+  classMenu,
+  isOpen,
+}) => {
   const backdropRef = useRef(null);
   const { user } = useCurrentUser();
 
-  useBackdropEffect(toggleMenu, backdropRef);
+  useBackdropEffect(isOpen, toggleMenu, backdropRef);
 
   return (
     <div
