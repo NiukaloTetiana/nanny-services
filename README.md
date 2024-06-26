@@ -1,4 +1,4 @@
-# Nanny.Services
+  # <img src="./public/favicon.png" alt="Logotype" style="width: 40px; height: auto;"> Nanny.Services
 
 "Nanny.Services" is a web application designed to connect users with available nannies. It allows users to browse through a list of nannies, filter them based on various criteria, and registered users can add or remove their favorite nannies. The application also provides features for user authentication, allowing users to register, login, and manage their profiles.
 
