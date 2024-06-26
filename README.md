@@ -8,7 +8,7 @@
 
 - Welcomes users with a site title, company slogan, and a call-to-action button redirecting to the "Nannies" page.
 
-![Home Page](./public/2.jpg)
+![Home Page](./public/1.jpg)
 
 **2. Nannies**
 
