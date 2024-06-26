@@ -7,7 +7,8 @@
 1. **Home**
 
    - Welcomes users with a site title, company slogan, and a call-to-action button redirecting to the "Nannies" page.
-     ![nanny-services](/public/1.png)
+
+   ![Home Page](./public/1.png)
 
 2. **Nannies**
 
@@ -15,12 +16,15 @@
    - Supports sorting (alphabetically A-Z, Z-A), filtering by price, and sorting by popularity.
    - Features dynamic loading of nanny cards with a "Load more" button.
    - Allows authenticated users to add nannies to favorites.
-     ![nanny-services](/public/2.png)
+
+   ![Nannies Page](./public/2.jpg)
 
 3. **Favorites**
+
    - Private page accessible to authenticated users.
    - Allows users to view and manage their favorite nannies.
-     ![nanny-services](/public/3.png)
+
+   ![Favorites Page](./public/3.png)
 
 ## Features
 
@@ -29,7 +33,7 @@
 - **Modal Dialogs**: Used for login/registration/logout and appointment scheduling.
 - **Form Validation**: Implemented using React Hook Form and Yup for client-side validation.
 
-![nanny-services](/public/4.png) ![nanny-services](/public/5.png)
+![Feature Registration](./public/4.png) ![Feature login](./public/5.png)
 
 ## About the Project
 
