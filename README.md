@@ -4,27 +4,27 @@
 
 ### Pages
 
-1. **Home**
+**1. Home**
 
-   - Welcomes users with a site title, company slogan, and a call-to-action button redirecting to the "Nannies" page.
+- Welcomes users with a site title, company slogan, and a call-to-action button redirecting to the "Nannies" page.
 
-   ![Home Page](./public/1.png)
+![Home Page](./public/1.png)
 
-2. **Nannies**
+**2. Nannies**
 
-   - Lists available nannies. Each nanny card includes essential details and a "Read more" button for expanded information.
-   - Supports sorting (alphabetically A-Z, Z-A), filtering by price, and sorting by popularity.
-   - Features dynamic loading of nanny cards with a "Load more" button.
-   - Allows authenticated users to add nannies to favorites.
+- Lists available nannies. Each nanny card includes essential details and a "Read more" button for expanded information.
+- Supports sorting (alphabetically A-Z, Z-A), filtering by price, and sorting by popularity.
+- Features dynamic loading of nanny cards with a "Load more" button.
+- Allows authenticated users to add nannies to favorites.
 
-   ![Nannies Page](./public/2.jpg)
+![Nannies Page](./public/2.jpg)
 
-3. **Favorites**
+**3. Favorites**
 
-   - Private page accessible to authenticated users.
-   - Allows users to view and manage their favorite nannies.
+- Private page accessible to authenticated users.
+- Allows users to view and manage their favorite nannies.
 
-   ![Favorites Page](./public/3.png)
+![Favorites Page](./public/3.png)
 
 ## Features
 
