@@ -1,11 +1,15 @@
 import {
+  endAt,
   get,
   limitToFirst,
+  limitToLast,
+  orderByChild,
   orderByKey,
   query,
   ref,
   set,
   startAfter,
+  startAt,
 } from "firebase/database";
 import { auth, database } from "../firebase/config";
 import {
@@ -49,28 +53,93 @@ export const getNannies = async (index) => {
   }
 };
 
-export const getFavoritesNannies = async (nanniesId, page) => {
+export const getFilteredNannies = async (filter, lastIndex = null) => {
   const limit = 3;
   try {
-    const start = (page - 1) * limit;
-    const end = start + limit;
-    const paginatedNanniesId = nanniesId.slice(start, end);
+    let nanniesQuery;
+    const nanniesRef = ref(database, "/nannies/nanniesList");
 
-    const promises = paginatedNanniesId.map(async (id) => {
-      const snapshot = await get(ref(database, `/nannies/nanniesList/${id}`));
+    switch (filter) {
+      case "A to Z":
+        nanniesQuery = query(
+          nanniesRef,
+          orderByChild("name"),
+          limitToFirst(limit)
+        );
+        break;
+      case "Z to A":
+        nanniesQuery = query(
+          nanniesRef,
+          orderByChild("name"),
+          limitToLast(limit)
+        );
+        break;
+      case "Less than 10$":
+        nanniesQuery = query(
+          nanniesRef,
+          orderByChild("price_per_hour"),
+          startAt(0),
+          endAt(10),
+          limitToFirst(limit)
+        );
+        break;
+      case "Greater than 10$":
+        nanniesQuery = query(
+          nanniesRef,
+          orderByChild("price_per_hour"),
+          startAt(10),
+          limitToFirst(limit)
+        );
+        break;
+      case "Popular":
+        nanniesQuery = query(
+          nanniesRef,
+          orderByChild("rating"),
+          limitToLast(limit)
+        );
+        break;
+      case "Not popular":
+        nanniesQuery = query(
+          nanniesRef,
+          orderByChild("rating"),
+          limitToFirst(limit)
+        );
+        break;
+      case "Show all":
+        nanniesQuery = query(nanniesRef, orderByKey(), limitToFirst(limit));
+        break;
+      default:
+        nanniesQuery = query(
+          nanniesRef,
+          orderByChild("name"),
+          limitToFirst(limit)
+        );
+        break;
+    }
 
-      if (snapshot.exists()) {
-        return { id, ...snapshot.val() };
-      } else {
-        return null;
-      }
-    });
-    const nannies = (await Promise.all(promises)).filter(
-      (nanny) => nanny !== null
-    );
+    if (lastIndex) {
+      nanniesQuery = query(nanniesQuery, startAfter(lastIndex));
+    }
+
+    const snapshot = await get(nanniesQuery);
+
+    if (!snapshot.exists()) {
+      return [];
+    }
+
+    const result = snapshot.val();
+    let nannies = Object.keys(result).map((key) => ({
+      id: key,
+      ...result[key],
+    }));
+
+    if (filter === "Z to A") {
+      nannies.sort((a, b) => b.name.localeCompare(a.name));
+    }
+
     return nannies;
   } catch (error) {
-    throw new Error(`Error fetching favorites nannies.`);
+    throw new Error("Something went wrong. Please, try again later.");
   }
 };
 
