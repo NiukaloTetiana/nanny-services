@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-
 import { Icon } from "../../components";
 
-export const Filter = () => {
+export const Filter = ({ filterFunction }) => {
   const [isListVisible, setIsListVisible] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState("A to Z");
+  const [selectedFilter, setSelectedFilter] = useState("Show all");
   const filterRef = useRef(null);
 
   const handleListClick = () => {
@@ -14,6 +13,7 @@ export const Filter = () => {
   const handleFilterClick = (filter) => {
     setSelectedFilter(filter);
     setIsListVisible(false);
+    filterFunction(filter);
   };
 
   const handleClickOutside = (event) => {
@@ -34,7 +34,6 @@ export const Filter = () => {
       <p className="font-medium text-[14px] leading-[1.3] text-secondTextColor mb-[8px]">
         Filters
       </p>
-
       <div
         ref={filterRef}
         onClick={handleListClick}
@@ -49,7 +48,6 @@ export const Filter = () => {
           size="20"
         />
       </div>
-
       {isListVisible && (
         <ul className="absolute top-[88px] left-0 bg-whiteColor rounded-[14px] px-[18px] py-[16px] w-[180px] md:w-[226px] font-normal text-[16px] md:text-[18px] leading-[1.1] text-textFilterColor custom-list-spacing z-[2] shadow-list-shadow">
           {[

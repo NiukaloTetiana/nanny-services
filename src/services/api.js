@@ -76,7 +76,7 @@ export const getFavoritesNannies = async (nanniesId, page) => {
   } catch (error) {
     throw new Error(`Error fetching favorites nannies.`);
   }
-}
+};
 
 export const getFilteredNannies = async (filter, lastIndex = null) => {
   const limit = 3;
