@@ -17,3 +17,4 @@ export * from "./NanniesList/NanniesReviews.jsx";
 export * from "./AppointmentForm/AppointmentForm.jsx";
 export * from "./LogOut/LogOut.jsx";
 export * from "./ScrollUpButton/ScrollUpButton.jsx";
+export * from "./TitleWrapper/TitleWrapper.jsx";
