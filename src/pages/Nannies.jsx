@@ -8,12 +8,12 @@ import {
   NanniesList,
   TitleWrapper,
 } from "../components";
+
 import { getNanniesFilter } from "../helpers";
 import { getNannies, getNanniesTotal } from "../services";
 
 const Nannies = () => {
   const [nannies, setNannies] = useState([]);
-  const [filteredNannies, setFilteredNannies] = useState([]);
   const [page, setPage] = useState(1);
   const [lastIndex, setLastIndex] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,42 +33,38 @@ const Nannies = () => {
       const newNannies = await getNannies(lastIndex);
 
       if (newNannies.length) {
-        const updatedNannies = [...nannies, ...newNannies];
-        setNannies(updatedNannies);
+        setNannies((prev) => [...prev, ...newNannies]);
         setLastIndex(newNannies[newNannies.length - 1].id);
-
-        const filtered = getNanniesFilter(updatedNannies, currentFilter);
-        setFilteredNannies(filtered);
       }
     } catch (error) {
       toast.error(error.message);
     } finally {
       setIsLoading(false);
     }
-  }, [page, lastIndex, nannies, currentFilter]);
+  }, [page, lastIndex]);
 
   useEffect(() => {
     loadNannies();
   }, [page]);
 
-  const handleFilterChange = (filter) => {
-    setCurrentFilter(filter);
-    const filtered = getNanniesFilter(nannies, filter);
-    setFilteredNannies(filtered);
-  };
-
   const onLoadMoreClick = () => {
     setPage((prevPage) => prevPage + 1);
+  };
+
+  const handleFilterChange = (filter) => {
+    setCurrentFilter(filter);
   };
 
   if (isLoading && !nannies.length) {
     return <Loader />;
   }
 
+  const filteredNannies = getNanniesFilter(nannies, currentFilter);
+
   return (
     <div className="bg-bgLightColor min-h-screen">
       <div className="container bg-bgLightColor pt-[64px] pb-[100px]">
-        {nannies.length > 0 && <Filter filterFunction={handleFilterChange} />}
+        <Filter filterFunction={handleFilterChange} />
         {filteredNannies.length ? (
           <NanniesList nannies={filteredNannies} />
         ) : (
