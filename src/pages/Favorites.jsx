@@ -10,49 +10,62 @@ import {
 } from "../components";
 
 import { getFavoritesNannies } from "../services";
-import { useLocalStorage } from "../hooks";
 import { getNanniesFilter } from "../helpers";
+import { useLocalStorage } from "../hooks";
 
 const Favorites = () => {
   const [nannies, setNannies] = useState([]);
+  const [filteredNannies, setFilteredNannies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const [isLoadMore, setisLoadMore] = useState(false);
+  const [isLoadMore, setIsLoadMore] = useState(false);
   const { favoritesList } = useLocalStorage();
-  const { filteredNannies, filterNannies } = getNanniesFilter(nannies);
   const [currentFilter, setCurrentFilter] = useState("Show all");
 
   useEffect(() => {
-    setIsLoading(true);
-    if (favoritesList.length) {
+    const fetchFavorites = async () => {
+      setIsLoading(true);
+
+      if (favoritesList.length === 0) {
+        setIsLoading(false);
+        return;
+      }
+
       const total = favoritesList.length;
       const isMoreNannies = page * 3 < total;
-
-      setisLoadMore(isMoreNannies);
+      setIsLoadMore(isMoreNannies);
 
       if (!isMoreNannies) {
         toast.info("You have reached the end of the list of nannies.");
       }
-      getFavoritesNannies(favoritesList, page)
-        .then((data) => {
-          setNannies((prev) => [...prev, ...data]);
-        })
-        .catch((error) => toast.error(error.message))
-        .finally(() => {
-          setIsLoading(false);
-        });
-    } else {
-      setIsLoading(false);
-    }
+
+      try {
+        const data = await getFavoritesNannies(favoritesList, page);
+        const updatedNannies = [...nannies, ...data];
+        setNannies(updatedNannies);
+
+        const filtered = getNanniesFilter(updatedNannies, currentFilter);
+        setFilteredNannies(filtered);
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchFavorites();
   }, [favoritesList, page]);
 
   useEffect(() => {
-    filterNannies(currentFilter);
-  }, [currentFilter, filterNannies, nannies]);
+    const filtered = getNanniesFilter(nannies, currentFilter);
+    setFilteredNannies(filtered);
+  }, [currentFilter, nannies]);
 
   const handleClickLike = (id) => {
     const filteredNannies = nannies.filter((nanny) => nanny.id !== id);
     setNannies(filteredNannies);
+    const filtered = getNanniesFilter(filteredNannies, currentFilter);
+    setFilteredNannies(filtered);
   };
 
   const onLoadMoreClick = () => {
@@ -63,12 +76,14 @@ const Favorites = () => {
     setCurrentFilter(filter);
   };
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  if (isLoading && !nannies.length) {
+    return <Loader />;
+  }
+
+  return (
     <div className="bg-bgLigtColor min-h-screen">
       <div className="container pt-[45px] pb-[40px] md:pt-[64px] md:pb-[100px]">
-        {favoritesList.length > 0 || filteredNannies.length > 0 ? (
+        {favoritesList.length > 0 ? (
           <>
             <Filter filterFunction={handleFilterChange} />
             {filteredNannies.length > 0 ? (
@@ -84,9 +99,10 @@ const Favorites = () => {
             )}
           </>
         ) : (
-          <TitleWrapper title="You haven`t added any nannies here yet." />
+          <TitleWrapper title="You haven't added any nannies here yet." />
         )}
       </div>
+      {/* {isLoading && <Loader />} */}
     </div>
   );
 };

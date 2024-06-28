@@ -13,13 +13,12 @@ import { getNannies, getNanniesTotal } from "../services";
 
 const Nannies = () => {
   const [nannies, setNannies] = useState([]);
+  const [filteredNannies, setFilteredNannies] = useState([]);
   const [page, setPage] = useState(1);
   const [lastIndex, setLastIndex] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadMore, setIsLoadMore] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("Show all");
-
-  const { filteredNannies, filterNannies } = getNanniesFilter(nannies);
 
   const loadNannies = useCallback(async () => {
     try {
@@ -34,30 +33,32 @@ const Nannies = () => {
       const newNannies = await getNannies(lastIndex);
 
       if (newNannies.length) {
-        setNannies((prev) => [...prev, ...newNannies]);
+        const updatedNannies = [...nannies, ...newNannies];
+        setNannies(updatedNannies);
         setLastIndex(newNannies[newNannies.length - 1].id);
+
+        const filtered = getNanniesFilter(updatedNannies, currentFilter);
+        setFilteredNannies(filtered);
       }
     } catch (error) {
       toast.error(error.message);
     } finally {
       setIsLoading(false);
     }
-  }, [page, lastIndex]);
+  }, [page, lastIndex, nannies, currentFilter]);
 
   useEffect(() => {
     loadNannies();
   }, [page]);
 
-  useEffect(() => {
-    filterNannies(currentFilter);
-  }, [currentFilter, filterNannies, nannies]);
+  const handleFilterChange = (filter) => {
+    setCurrentFilter(filter);
+    const filtered = getNanniesFilter(nannies, filter);
+    setFilteredNannies(filtered);
+  };
 
   const onLoadMoreClick = () => {
     setPage((prevPage) => prevPage + 1);
-  };
-
-  const handleFilterChange = (filter) => {
-    setCurrentFilter(filter);
   };
 
   if (isLoading && !nannies.length) {
@@ -67,7 +68,7 @@ const Nannies = () => {
   return (
     <div className="bg-bgLightColor min-h-screen">
       <div className="container bg-bgLightColor pt-[64px] pb-[100px]">
-        <Filter filterFunction={handleFilterChange} />
+        {nannies.length > 0 && <Filter filterFunction={handleFilterChange} />}
         {filteredNannies.length ? (
           <NanniesList nannies={filteredNannies} />
         ) : (
