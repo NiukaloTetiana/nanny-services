@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { toast } from "react-toastify";
 
 import { Filter, LoadMoreButton, Loader, NanniesList } from "../components";
-import { useNanniesFilter } from "../hooks";
+import { getNanniesFilter } from "../helpers";
 import { getNannies, getNanniesTotal } from "../services";
 
 const Nannies = () => {
@@ -13,7 +13,7 @@ const Nannies = () => {
   const [isLoadMore, setIsLoadMore] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("Show all");
 
-  const { filteredNannies, filterNannies } = useNanniesFilter(nannies);
+  const { filteredNannies, filterNannies } = getNanniesFilter(nannies);
 
   const loadNannies = useCallback(async () => {
     try {

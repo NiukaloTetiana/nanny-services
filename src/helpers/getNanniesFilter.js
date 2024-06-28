@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-export const useNanniesFilter = (initialNannies) => {
+export const getNanniesFilter = (initialNannies) => {
   const [filteredNannies, setFilteredNannies] = useState(initialNannies);
 
   useEffect(() => {

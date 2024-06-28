@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import { Filter, LoadMoreButton, Loader, NanniesList } from "../components";
 
 import { getFavoritesNannies } from "../services";
-import { useLocalStorage, useNanniesFilter } from "../hooks";
+import { useLocalStorage} from "../hooks";
+import { getNanniesFilter } from "../helpers";
 
 const Favorites = () => {
   const [nannies, setNannies] = useState([]);
@@ -12,7 +13,7 @@ const Favorites = () => {
   const [page, setPage] = useState(1);
   const [isLoadMore, setisLoadMore] = useState(false);
   const { favoritesList } = useLocalStorage();
-  const { filteredNannies, filterNannies } = useNanniesFilter(nannies);
+  const { filteredNannies, filterNannies } = getNanniesFilter(nannies);
   const [currentFilter, setCurrentFilter] = useState("Show all");
 
   useEffect(() => {
