@@ -29,10 +29,6 @@ const Favorites = () => {
 
       setIsLoadMore(isMoreNannies);
 
-      // if (!isMoreNannies && page > 1 && nannies.length > 3) {
-      //   toast.info("You have reached the end of the list of nannies.");
-      // }
-
       getFavoritesNannies(favoritesList, page)
         .then((data) => {
           if (page === 1) {
@@ -68,8 +64,6 @@ const Favorites = () => {
   if (isLoading) {
     return <Loader />;
   }
-
-  console.log(favoritesList.length, "LOOOOOO");
 
   return (
     <div className="bg-bgLigtColor min-h-screen">
