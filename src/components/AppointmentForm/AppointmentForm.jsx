@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import DatePicker from "react-datepicker";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Icon } from "../../components";
 import { appointmentSchema } from "../../schemas/validationSchemas";
-
 import { formatPhoneNumber } from "../../helpers";
+import { createAppointment } from "../../services";
 
 export const AppointmentForm = ({ avatar_url, name }) => {
   const [phone, setPhone] = useState("+380 ");
@@ -15,6 +17,7 @@ export const AppointmentForm = ({ avatar_url, name }) => {
     register,
     handleSubmit,
     setValue,
+    reset,
     control,
     formState: { errors, dirtyFields },
   } = useForm({
@@ -23,7 +26,14 @@ export const AppointmentForm = ({ avatar_url, name }) => {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
+    try {
+      await createAppointment(data);
+      toast.success("Appointment created successfully!");
+      reset();
+      setPhone("+380 ");
+    } catch (error) {
+      toast.error("Error creating appointment.");
+    }
   };
 
   const inputClass = (fieldName) => {
@@ -63,7 +73,8 @@ export const AppointmentForm = ({ avatar_url, name }) => {
   };
 
   return (
-    <div className="max-h-[80vh] px-[4px]  lg:pr-[32px] scrollbar">
+    <div className="max-h-[80vh] px-[4px] lg:pr-[32px] scrollbar">
+      <ToastContainer />
       <h2 className="w-full md:w-[350px] lg:w-[450px] font-medium text-[30px] leading-[1.2] tracking-[-0.02em] text-darkColor mb-[15px] md:mb-[20px] sm-max:text-[25px] lg:text-[40px]">
         Make an appointment with a babysitter
       </h2>
