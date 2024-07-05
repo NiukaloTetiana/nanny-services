@@ -161,6 +161,12 @@ export const AppointmentForm = ({ avatar_url, name }) => {
                 placeholderText="00:00"
                 className={inputClass("time")}
                 calendarClassName="w-[151px] h-[180px] bg-white shadow-datepicker-shadow rounded-[12px] p-[16px] font-medium text-[16px] leading-[1.5] text-darkColor overflow-y-auto scrollbar custom-time-select"
+                onChangeRaw={(e) => {
+                  const input = e.target.value;
+                  if (!/^([01]?[0-9]|2[0-3]):([0-5][0-9])?$/.test(input)) {
+                    e.preventDefault();
+                  }
+                }}
               />
             )}
           />
