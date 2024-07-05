@@ -5,6 +5,7 @@ import {
   limitToLast,
   orderByChild,
   orderByKey,
+  push,
   query,
   ref,
   set,
@@ -177,6 +178,23 @@ export const getNanniesTotal = async () => {
     return total;
   } catch (error) {
     throw new Error("Sorry... Something went wrong.");
+  }
+};
+
+export const createAppointment = async (appointmentData) => {
+  try {
+    const user = auth.currentUser;
+    let appointmentsRef;
+
+    if (user) {
+      appointmentsRef = ref(database, `/users/${user.uid}/appointments`);
+    } else {
+      appointmentsRef = ref(database, `/appointments`);
+    }
+
+    await push(appointmentsRef, appointmentData);
+  } catch (error) {
+    throw new Error("Error creating appointment.");
   }
 };
 
